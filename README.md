@@ -16,7 +16,7 @@ In our repositiory we will have the following for your convenience:
 **How to work as a team on github**
 
 1. Set up a branch using git checkout -b <branch-name>
-[screenshot of checking out a branch](/workflowImages/git%20branch.png)
+[screenshot of checking out a branch](workflowImages\git branch.png)
 
 2. Complete your changes and then use git add . or git add -A 
 [this is the difference between what your files should look like before git adding](/workflowImages/git%20before%20add.png)
