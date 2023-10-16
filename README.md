@@ -1,7 +1,7 @@
 # G2A4
 CFG Assignment 4 
 
-**Welcome to our repository**
+# Welcome to our repository
 In our repositiory we will have the following for your convenience: 
 
 1. This readme will have 6 different markdown text formatting features
@@ -13,31 +13,40 @@ In our repositiory we will have the following for your convenience:
 3. Create a gitignore file 
 4. Create a reqiurements.txt file and briefly explain what it's for 
 
-**How to work as a team on github**
+## **How to work as a team on github**
 
-1. Set up a branch using git checkout -b <branch-name>
-[screenshot of checking out a branch](https://github.com/ad660/G2A4/blob/main/workflowImages/Git%20branch.png)
+### 1.  Set up a branch using **git checkout -b < branch-name >** (without the spaces next to the branch name)
 
-2. Complete your changes and then use git add . or git add -A 
-[this is the difference between what your files should look like before git adding](https://github.com/ad660/G2A4/blob/main/workflowImages/git%20before%20add.png)
-[Git after add](https://github.com/ad660/G2A4/blob/main/workflowImages/git%20after%20add.png)
+![screenshot of checking out a branch](/workflowImages/git%20branch.png)
 
-3. Now commit your changes, if its the first time you may have to set the upstream origin to your local repo name 
-[using git commit -m](https://github.com/ad660/G2A4/blob/main/workflowImages/git%20add%20git%20commit.png)
-[finished commiting](https://github.com/ad660/G2A4/blob/main/workflowImages/git%20commited.png)
+### 2.  Complete your changes and then use **git add . or git add -A** 
 
-4. Now push 
-[git push](https://github.com/ad660/G2A4/blob/main/workflowImages/git%20push%20origin%20.png)
+![this is the difference between what your files should look like before git adding](/workflowImages/git%20before%20add.png)
+![Git after add](/workflowImages/git%20after%20add.png)
 
-5. First select the branch you want to create a pull request from: 
-[Select branch](https://github.com/ad660/G2A4/blob/main/workflowImages/Select%20branch.png)
 
-6. Select 'new pull request' 
-[New pull request](https://github.com/ad660/G2A4/blob/main/workflowImages/New%20pull%20request.png)
+### 3.  Now **commit your changes**, if its the first time you may have to set the upstream origin to your local repo name 
 
-7. Now create your pull request and check that everything looks in order
-[create pull request p1.1](https://github.com/ad660/G2A4/blob/main/workflowImages/Create%20request.png)
-[pt 2](https://github.com/ad660/G2A4/blob/main/workflowImages/Create%20request%202.png)
+![using git commit -m](/workflowImages/git%20add%20git%20commit.png)
+![finished commiting](/workflowImages/git%20commited.png)
 
-8. Finally merge 
-[merge](https://github.com/ad660/G2A4/blob/main/workflowImages/Merge%20.png)
+### 4. Now **git push**
+
+![git push](/workflowImages/git%20push%20origin%20.png)
+
+### 5.  First **select the branch** you want to create a pull request from: 
+
+![Select branch](/workflowImages/Select%20branch.png)
+
+### 6.  Select **'new pull request'** 
+
+![New pull request](/workflowImages/New%20pull%20request.png)
+
+### 7.  Now **create your pull request** and check that everything looks in order
+
+![create pull request p1.1](/workflowImages/Create%20request.png)
+![pt 2](/workflowImages/Create%20request%202.png)
+
+### 8. Finally **merge** 
+
+[merge](/workflowImages/Merge%20.png)
