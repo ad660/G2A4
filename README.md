@@ -52,3 +52,5 @@ In our repositiory we will have the following for your convenience:
 ### 8. Finally **merge**
 
 [merge](/workflowImages/Merge%20.png)
+
+Hi I am showing what will happen when someone has merged and my branch is not up tp date with the new main branch.
