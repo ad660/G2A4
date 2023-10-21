@@ -65,3 +65,5 @@ In our repositiory we will have the following for your convenience:
 ### 2. Faiza Javed:
 A recent Computing BSC graduate who is passionate about developing software and websites. I particularly enjoy problem solving and working on breaking down complex tasks.
 
+### 3. Jane Neave
+A BSc Human Neuroscience graduate from the University of Birmingham, a huge animal lover and a work-in-progress runner!
