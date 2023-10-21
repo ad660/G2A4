@@ -59,3 +59,9 @@ In our repositiory we will have the following for your convenience:
 ## About our team:
 
 ### 1.
+
+
+
+### 2. Faiza Javed:
+A recent Computing BSC graduate who is passionate about developing software and websites. I particularly enjoy problem solving and working on breaking down complex tasks.
+
