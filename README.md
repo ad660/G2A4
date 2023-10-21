@@ -11,7 +11,7 @@ In our repositiory we will have the following for your convenience:
     - (git add, commit, pull and merge)
     - We will use meaningful commit messages 
     - We will use appropriate branches to synchronise workflow 
-    - Adding files to branches 
+    - Adding files to branches
 3. Create a gitignore file 
 4. Create a requirements.txt file and briefly explain what it's for 
 
