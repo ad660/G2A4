@@ -9,6 +9,15 @@ Slogan: \* _The sky is not the limit_ \*
 In our repositiory we will have the following for your convenience:
 
 1. This readme file will have 6 different markdown text formatting features
+<<<<<<< HEAD
+2. We will demonstrate a scenario of how to work as a team on github 
+    - (git add, commit, pull and merge)
+    - We will use meaningful commit messages 
+    - We will use appropriate branches to synchronise workflow 
+    - Adding files to branches
+3. Create a gitignore file 
+4. Create a requirements.txt file and briefly explain what it's for 
+=======
 2. We will demonstrate a scenario of how to work as a team on github
    - (git add, commit, pull and merge)
    - We will use meaningful commit messages
@@ -16,6 +25,7 @@ In our repositiory we will have the following for your convenience:
    - Adding files to branches
 3. Create a gitignore file
 4. Create a requirements.txt file and briefly explain what it's for
+>>>>>>> 522aed6b58779dc1d89569c38656a8cfe8fecc5a
 
 ## **How to work as a team on github**
 
