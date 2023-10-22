@@ -70,12 +70,16 @@ In our repositiory we will have the following for your convenience:
 
 ### 1. Hanna Jankuniec:
 
-A service and managment engineer, crazy cat lady and powerlifter. Obsessed about korean cusine, tech and romance novels.
+A service and management engineer, crazy cat lady and powerlifter. Obsessed about korean cusine, tech and romance novels.
 
 ### 2. Faiza Javed:
 
 A recent Computing BSC graduate who is passionate about developing software and websites. I particularly enjoy problem solving and working on breaking down complex tasks.
 
-### 3. Jane Neave
+### 3. Jane Neave:
 
 A BSc Human Neuroscience graduate from the University of Birmingham, a huge animal lover and a work-in-progress runner!
+
+### 4. Carrera Leteta:
+
+A BSc Business Psychology graduate and a dedicated Cellist. I enjoy learning new things, strategising, problem solving and the great outdoors to name a few interests. Currnetly, I'm plotting how I will take over the world.
