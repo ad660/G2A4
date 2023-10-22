@@ -82,4 +82,4 @@ A BSc Human Neuroscience graduate from the University of Birmingham, a huge anim
 
 ### 4. Carrera Leteta:
 
-A BSc Business Psychology graduate and a dedicated Cellist. I enjoy learning new things, strategising, problem solving and the great outdoors to name a few interests. Currently, I am plotting how I will take over the world after I graduate form CFG ofcourse.
+A BSc Business Psychology graduate and a dedicated Cellist. I enjoy learning new things, strategising, problem solving and the great outdoors to name a few interests. Currently, I am plotting how I will take over the world after I graduate from CFG of course.
