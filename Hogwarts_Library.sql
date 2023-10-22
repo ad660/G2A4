@@ -4,7 +4,7 @@ USE Hogwarts_Library;
 
 -- Create a table to track book stock levels
 CREATE TABLE book_stock (
-    stockID INT AUTO_INCREMENT PRIMARY KEY,
+    stockID INT AUTO_INCREMENT UNIQUE PRIMARY KEY,
     stock_quantity INT NOT NULL,
     stock_available INT NOT NULL
 );
@@ -23,9 +23,9 @@ CREATE TABLE books (
 );
 
 -- Create a table to store information about students
-
 CREATE TABLE students (
-    studentID INT AUTO_INCREMENT PRIMARY KEY,
+    studentID INT AUTO_INCREMENT UNIQUE PRIMARY KEY,
+
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     birthDate DATE NOT NULL,
@@ -36,12 +36,12 @@ CREATE TABLE students (
 
 -- Create a table to store information about books on loan
 CREATE TABLE loaned_books (
-    loanID INT AUTO_INCREMENT PRIMARY KEY,
+    loanID INT AUTO_INCREMENT UNIQUE PRIMARY KEY,
     bookID INT,
     studentID INT,
-    cheked_out_date  DATETIME NOT NULL,
-    return_date DATE, 
-    due_date DATE,
+    checked_out_date DATE NOT NULL,
+    return_due DATE,
+
     overdue_fines DECIMAL(10, 2),
     FOREIGN KEY (bookID) REFERENCES books(bookID),
     FOREIGN KEY (studentID) REFERENCES students(studentID)
@@ -60,18 +60,21 @@ VALUES
     (2, 0),
     (1, 1);
     
-   INSERT INTO books (title, author, year_published, _subject, _description, age_restrict, stockID)
+
+
+INSERT INTO books (title, author, year_published, _subject, _description, age_restrict, stockID)
 VALUES
-    ('Fantastic Beasts and Where to Find Them', 'Newt Scamander', 2001, 'Magizoology', 'A guide to magical creatures', 5, 1),
-    ('The Standard Book of Spells', 'Miranda Goshawk', 1990, 'Spellbook', 'A basic guide to spellcasting', 5, 2),
+    ('Fantastic Beasts and Where to Find Them', 'Newt Scamander', 2001, 'Magizoology', 'A guide to magical creatures', 11, 1),
+    ('The Standard Book of Spells', 'Miranda Goshawk', 1990, 'Spellbook', 'A basic guide to spellcasting', 11, 2),
     ('Quidditch Through the Ages', 'Kennilworthy Whisp', 1999, 'Sports', 'The history of Quidditch', 5, 3),
-    ('The Dark Forces: A Guide to Self-Protection', 'Quentin Trimble', 1980, 'Defense Against the Dark Arts', 'Defending against dark magic', 5, 4),
-    ('Hogwarts: A History', 'Bathilda Bagshot', 2005, 'History', 'The history of Hogwarts', 5, 5),
-    ('Magical Drafts and Potions', 'Arsenius Jigger', 2002, 'Potions', 'A guide to potion-making', 5, 6),
-    ('A History of Magic', 'Bathilda Bagshot', 1899, 'History', 'The history of wizardry', 5, 7),
-    ('Standard Book of Spells, Grade 3', 'Miranda Goshawk', 2000, 'Spellbook', 'An Intermediate\'s spellbook', 5, 8),
-    ('The Tales of Beedle the Bard', 'Beedle the Bard', 1640, 'Fairy Tales', 'Wizarding fairy tales', 5, 9),
-    ('Quintessence: A Quest', 'Unknown', 2002, 'Magical Philosophy', 'A philosophical exploration', 5, 10);
+    ('The Dark Forces: A Guide to Self-Protection', 'Quentin Trimble', 1980, 'Defense Against the Dark Arts', 'Defending against dark magic', 16, 4),
+    ('Hogwarts: A History', 'Bathilda Bagshot', 2005, 'History', 'The history of Hogwarts', 11, 5),
+    ('Magical Drafts and Potions', 'Arsenius Jigger', 2002, 'Potions', 'A guide to potion-making', 11, 6),
+    ('A History of Magic', 'Bathilda Bagshot', 1899, 'History', 'The history of wizardry', 11, 7),
+    ('Standard Book of Spells, Grade 3', 'Miranda Goshawk', 2000, 'Spellbook', 'An Intermediate\'s spellbook', 14, 8),
+    ('The Tales of Beedle the Bard', 'Beedle the Bard', 1640, 'Fairy Tales', 'Wizarding fairy tales', 3, 9),
+    ('Quintessence: A Quest', 'Unknown', 2002, 'Magical Philosophy', 'A philosophical exploration', 11, 10);
+
      
     INSERT INTO students (first_name, last_name, birthDate, house, email, join_date)
 VALUES
@@ -100,7 +103,8 @@ VALUES
     ('Vincent', 'Crabbe', '1980-05-02', 'Slytherin', 'vincent@example.com', '1980-09-01'),
     ('Gregory', 'Goyle', '1979-11-02', 'Slytherin', 'gregory@example.com', '1979-09-01'); 
     
-    INSERT INTO loaned_books (bookID, studentID, cheked_out_date, return_date)
+
+INSERT INTO loaned_books (bookID, studentID, checked_out_date, return_due)
 VALUES
 	(1, 6, '2023-10-14', '2023-10-28'),
     (2, 10, '2023-10-16', '2023-10-30'),
@@ -109,4 +113,5 @@ VALUES
 SELECT * FROM books;
 SELECT * FROM book_stock;
 SELECT * FROM students;
-SELECT * FROM loaned_books;0
+SELECT * FROM loaned_books;
+
