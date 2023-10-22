@@ -58,12 +58,14 @@ In our repositiory we will have the following for your convenience:
 
 ## About our team:
 
-### 1.
+### 1. Hanna Jankuniec:
 
-
+A service and managment engineer, crazy cat lady and powerlifter. Obsessed about korean cusine, tech and romance novels.
 
 ### 2. Faiza Javed:
+
 A recent Computing BSC graduate who is passionate about developing software and websites. I particularly enjoy problem solving and working on breaking down complex tasks.
 
 ### 3. Jane Neave
+
 A BSc Human Neuroscience graduate from the University of Birmingham, a huge animal lover and a work-in-progress runner!
