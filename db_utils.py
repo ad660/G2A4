@@ -23,30 +23,13 @@ def RunQuery():
 
 
 ## GET BOOKS ON LOAN BY STUDENT ID
-def _map_values(student_loaned_books):
-    mapped = []
-    for item in student_loaned_books:
-        mapped.append(
-            {
-                'studentID': item[0],
-                'title': item[1],
-                'author': item[2],
-                'check out': item[3].strftime("%d-%m-%Y"),
-                'return by': item[4].strftime("%d-%m-%Y")
-            }
-        )
-    return mapped
-
-# sample query to make sure we're connected to DB
 def get_books_by_student_id(student_id):
     try:
-        # connecting to database (always the SAME!)
         db_name = 'hogwartslibrary'
         db_connection = _connect_to_db(db_name)
         cur = db_connection.cursor()
         print(f'Connected to database: {db_name}')
 
-        # executing query (SQL syntax in """ [SQL] """)
         query = """ 
         SELECT s.studentID, b.title, b.author, lb.checked_out_date, lb.return_date
         FROM students s
