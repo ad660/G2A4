@@ -23,3 +23,43 @@ def RunQuery():
 
 
 # GET BOOKS ON LOAN BY STUDENT ID
+def get_books_by_student_id(student_id):
+    try:
+        db_name = 'hogwartslibrary'
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+        print(f'Connected to database: {db_name}')
+
+        query = """ 
+        SELECT s.studentID, b.title, b.author, lb.checked_out_date, lb.return_date
+        FROM students s
+        JOIN loaned_books lb ON lb.studentID = s.studentID
+        JOIN books b ON lb.bookID = b.bookID
+        WHERE s.studentID = '{}'
+        """.format(student_id)
+
+        cur.execute(query)
+        results = cur.fetchall()
+
+        for i in results:
+            print(i)
+
+        cur.close()
+
+    except Exception:
+        print('Failed to read data from database')
+
+    finally:
+        if db_connection:
+            db_connection.close()
+            print('Connection closed')
+
+
+
+def main():
+    # RunQuery()
+    get_books_by_student_id(10)
+
+
+if __name__ == '__main__':
+    main()
