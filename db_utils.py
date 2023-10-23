@@ -10,3 +10,6 @@ def _connect_to_db(db_name):
         database=db_name
     )
     return cnx
+
+
+## GET BOOKS ON LOAN BY STUDENT ID
