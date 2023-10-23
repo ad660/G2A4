@@ -23,6 +23,21 @@ def RunQuery():
 
 
 # GET BOOKS ON LOAN BY STUDENT ID
+def _map_values(student_loaned_books):
+    mapped = []
+    for item in student_loaned_books:
+        mapped.append(
+            {
+                'studentID': item[0],
+                'title': item[1],
+                'author': item[2],
+                'check out': item[3].strftime("%d-%m-%Y"),
+                'return by': item[4].strftime("%d-%m-%Y")
+            }
+        )
+    return mapped
+
+
 def get_books_by_student_id(student_id):
     try:
         db_name = 'hogwartslibrary'
@@ -40,9 +55,7 @@ def get_books_by_student_id(student_id):
 
         cur.execute(query)
         results = cur.fetchall()
-
-        for i in results:
-            print(i)
+        student_books_on_loan = _map_values(results)
 
         cur.close()
 
@@ -53,6 +66,8 @@ def get_books_by_student_id(student_id):
         if db_connection:
             db_connection.close()
             print('Connection closed')
+    
+    return student_books_on_loan
 
 
 
