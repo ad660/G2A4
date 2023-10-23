@@ -56,7 +56,6 @@ def get_books_by_student_id(student_id):
         cur.execute(query)
         results = cur.fetchall()
         student_books_on_loan = _map_values(results)
-        print(student_books_on_loan)
 
         cur.close()
 
@@ -67,6 +66,8 @@ def get_books_by_student_id(student_id):
         if db_connection:
             db_connection.close()
             print('Connection closed')
+    
+    return student_books_on_loan
 
 
 
