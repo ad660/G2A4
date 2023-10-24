@@ -1,6 +1,7 @@
 import mysql.connector
 from config import HOST, USER, PASSWORD
 
+
 def _connect_to_db(db_name):
     cnx = mysql.connector.connect(
         host=HOST,
@@ -11,14 +12,16 @@ def _connect_to_db(db_name):
     )
     return cnx
 
+
 def RunQuery():
-    conn=mysql.connector.connect(host="localhost",user="root",password="Zenjie12!",database="Hogwarts_Library")
-    connection=conn.cursor()
+    conn = mysql.connector.connect(host="localhost", user="root", password="Zenjie12!", database="Hogwarts_Library")
+    connection = conn.cursor()
     connection.execute("select * from books")
-    results=connection.fetchall()
-    items=[]
+    results = connection.fetchall()
+    items = []
     for row in results:
-        items.append({'title':row[1],'author': row[2],'year_published':row[3],'subject':row[4],'description':row[5],'age_restrict':row[6],'stockID':row[7]})
+        items.append({'title': row[1], 'author': row[2], 'year_published': row[3],
+                      'subject': row[4], 'description': row[5], 'age_restrict': row[6], 'stockID': row[7]})
     return items
 
 
@@ -59,8 +62,8 @@ def get_books_by_student_id(student_id):
 
         cur.close()
 
-    except Exception:
-        print('Failed to read data from database')
+    except Exception as exc:
+        print(exc)
 
     finally:
         if db_connection:
@@ -68,7 +71,6 @@ def get_books_by_student_id(student_id):
             print('Connection closed')
     
     return student_books_on_loan
-
 
 
 def main():
