@@ -14,7 +14,7 @@ def _connect_to_db(db_name):
 
 
 def RunQuery():
-    conn = mysql.connector.connect(host="localhost", user="root", password="Zenjie12!", database="Hogwarts_Library")
+    conn = mysql.connector.connect(host=HOST, user=USER, password=PASSWORD, database="hogwartslibrary")
     connection = conn.cursor()
     connection.execute("select * from books")
     results = connection.fetchall()

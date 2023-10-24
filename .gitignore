@@ -1,3 +1,14 @@
+#WHAT IS A GITIGNORE FILE?
+
+# A gitignore (.gitignore) is a file that is usually used in GIT to specify files and folder (Directories) 
+# that are to be ignored and therefore not tracked by version control. 
+# In other words a Gitignore file is utilised to exclude files that were created during the initial development stages.
+# Some examples of such files are Compiled codes (such as .war, .class and .jar), ignore files ( such as .log) 
+# as well as temporary files (such as.tmp).
+# Any files that are added to the gitignore files are not considered for staging nor to be committed into a repository. 
+# The benefit of a gitignore is that assists in keeping a repository clean and further reduces cluttering.
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
