@@ -60,7 +60,7 @@ In our repositiory we will have the following for your convenience:
 
 ### 1. Hanna Jankuniec:
 
-A service and management engineer, crazy cat lady and powerlifter. Obsessed about korean cusine, tech and romance novels.
+A service and management engineer, crazy cat lady and powerlifter. Obsessed about korean cusine, tech and romance novels. Currently woroking on my coding skills!
 
 ### 2. Faiza Javed:
 
@@ -78,22 +78,24 @@ A BSc Business Psychology graduate and a dedicated Cellist. I enjoy learning new
 
 A recent languages grad from the University of Cambridge and a Trainee Front-End Engineer. Outside of tech, you can find me ~~spending hours in the kitchen~~ developing new recipes! Most recently, I baked Boston cream doughnuts! 😋🍩
 
+
 ### 6. Ayana Douglas:
 I am passionate about developing my technical skills ad capabilities, and I'm really excited to see where tech will be in the next 5 years. I enjoy food and love gaming, and I have a really cute dog named Bengal.
+
 
 # What is a Gitignore ?
 
 A gitignore (.gitignore) is a file that is usually used in GIT to specify files and folder (Directories) that are to be ignored and therefore not tracked by version control. In other words a Gitignore file is utilised to exclude files that were created during the initial development stages. Some examples of such files are:
 
-*Compiled codes, logs as well as temporary files. Any files that are added to the gitignore files are not considered for staging nor to be committed into a repository. The benefit of a gitignore is that assists in keeping a repository clean and further reduces cluttering.
+\*Compiled codes, logs as well as temporary files. Any files that are added to the gitignore files are not considered for staging nor to be committed into a repository. The benefit of a gitignore is that assists in keeping a repository clean and further reduces cluttering.
 
 # What is a Git requirement?
 
 A git requirement is essentially the requirement one needs to have on their computer or laptop which then allows them to use Git.
 Those git requirements are:
 
-* To download and install GitHub onto your computer or Laptop (via the official website)
-* Use compatible operating systems such as MAC, Linux and Windows
-* The user of Git should also have a good comprehension of command lines interface and how to implement the command 
+- To download and install GitHub onto your computer or Laptop (via the official website)
+- Use compatible operating systems such as MAC, Linux and Windows
+- The user of Git should also have a good comprehension of command lines interface and how to implement the command
   in their terminal or, at least how to search the internet for the correct command lines to then use in their terminal
-* The user will also need to have a repository hosting system such as GitHub or GitLab
+- The user will also need to have a repository hosting system such as GitHub or GitLab
