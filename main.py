@@ -42,6 +42,38 @@ def run_student_id_loaned_books():
 # -- END: GET LOANED BOOKS BY STUDENT ID --
 
 
+def display_student(student):
+    for item in student:
+        print("{} {} {} {} {} {} {}".format(
+            'Student ID: ' + str(item['studentID']),
+            '\nfirst_name: ' + str(item['first_name']),
+            '\nlast_name: ' + str(item['author']),
+            '\nbirthDate: ' + str(item['birthDate']),
+            '\nhouse ' + str(item['house']),
+            '\nemail: ' + str(item['return by']),
+            '\njoin date ' + str(item['join_date'])
+        ))
+
+
+def run_delete_graduated_students():
+    print ("Deleting all graduate student records: ")
+    try:
+        url = f'http://127.0.0.1:5000/students'
+        result = requests.get(url)
+        if result.status_code == 200:
+            data = result.json()
+            print("Displaying new result set: ")
+            display_student(data)
+            return data
+        else:
+            raise Exception(f'Request failed with status code: {result.status_code}')
+    except Exception as e:
+        print(f'Error occurred: {e}')
+        return None
+
+
+
 if __name__ == '__main__':
-    run_student_id_loaned_books()
+    # run_student_id_loaned_books()
+    run_delete_graduated_students()
     

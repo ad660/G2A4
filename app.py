@@ -42,12 +42,5 @@ def get_students():
     students_data = {"Students": get_all_students()}
     return jsonify(students_data), 200
 
-@app.route('/students/delete_graduated', methods=['DELETE'])
-def delete_graduated_students_api():
-    if request.method == 'DELETE':
-        delete_graduated_students()
-        data = {"Students": get_all_students()}
-    return jsonify(data), 200
-
 if __name__ == '__main__':
     app.run(debug=True)

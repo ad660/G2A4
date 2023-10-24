@@ -44,6 +44,25 @@ def get_all_students():
 
     return hogwarts_students
 
+# GET BOOKS ON LOAN BY STUDENT ID
+def _map_students_values(students_list):
+    mapped = []
+    for student in students_list:
+        mapped.append(
+            {
+                'first_name': student[1],
+                'last_name': student[2],
+                'birthDate': student[3].strftime("%d-%m-%Y"),
+                'house':student[4],
+                'email': student[5],
+                'join_date': student[6].strftime("%d-%m-%Y")
+            }
+        )
+    return (mapped)
+
+
+
+
 def RunQuery():
     conn = mysql.connector.connect(host=HOST, user=USER, password=PASSWORD, database="hogwartslibrary")
     connection = conn.cursor()
@@ -174,6 +193,11 @@ def delete_graduated_students ():
         SELECT * FROM students;
         """
 
+        cur.execute(query)
+        students = cur.fetchall()
+        student_list = _map_students_values(students)
+        cur.close()
+
         print(f'Students deleted successfully.')
 
     except Exception as e:
@@ -183,6 +207,7 @@ def delete_graduated_students ():
         if db_connection:
             db_connection.close()
             print('Connection closed')
+    return (student_list)
 
 def main():
     get_all_books()
