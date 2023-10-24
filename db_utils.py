@@ -161,6 +161,29 @@ def add_new_book(title, author, year_published, subject, description, age_restri
             db_connection.close()
             print('Connection closed')
 
+
+def delete_graduated_students ():
+    try:
+        db_name = 'hogwartslibrary'
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+        print(f'Connected to database: {db_name}')
+
+        query = """DELETE  s, lb FROM students s INNER JOIN loaned_books lb WHERE floor(datediff(now(),s.birthDate) / 
+        365.25)  >= 18;
+        SELECT * FROM students;
+        """
+
+        print(f'Students deleted successfully.')
+
+    except Exception as e:
+        print(f'Failed to add book. Error: {e}')
+
+    finally:
+        if db_connection:
+            db_connection.close()
+            print('Connection closed')
+
 def main():
     get_all_books()
     get_books_by_student_id(10)
