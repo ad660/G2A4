@@ -26,13 +26,10 @@ def get_all_students():
 
         cur.execute(query)
         students = cur.fetchall()
-        hogwarts_students = []
-        for student in students:
-            hogwarts_students.append({'first_name': student[1], 'last_name': student[2],
-                                     'birthDate': student[3], 'house': student[4],
-                                     'email': student[5], 'join_date': student[6]})
+        hogwarts_students = _map_students_values(students)
         print(hogwarts_students)
         cur.close()
+
 
     except Exception as exc:
         print(exc)
