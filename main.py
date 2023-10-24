@@ -118,48 +118,45 @@ def welcome_to_library():
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⠀⢸⣿⠀⠀⠈⠉⠁⠀⣀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠿⠀⠀⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠚⠛⠂⠀⠀⠀⠀⠀⢿⡦⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀''')
 
-    student_name = input("Welcome, what is your name? ")
-    print(f"Welcome to the Hogwarts Library {student_name}!")
-    student_id = int(input("To check out what books you current have out on loan please enter your student ID "))
+    librarian_name = input("Warm welcome back Hogwartian Librarian! Please sign in with your name: ")
+    print(f"Welcome to the Hogwarts Library {librarian_name}!")
+    print('There are multiple students with books on loan, their student ID\'s are: 6, 10, 12')
+    student_id = int(input("To check out what books a student currently have on loan please "
+                           "enter the number of their student ID : "))
     run_student_id_loaned_books(student_id)
-
-    print("There are several options avaliable for you to choose from")
-    print("If you would like to see all the books available please select option 1")
-    print("To check out a book please enter Select option 2 and enter the ID of the book you would like to check out")
-    print("(please note: one you check out a book it will be unavailable to other students)")
+    print("There are several other options available for you to choose from.")
     student_chooses_option()
 
 
 def student_chooses_option():
-    select_option = int(input("Please choose your option now "))
+    select_option = int(input("Please choose your option now: "))
+    print("If you would like to see all the books available please select option 1: ")
     if select_option == 1:
         print("You have chosen to see all books available")
         return get_all_books()
-    if select_option == 2:
-        print("You have chosen to check out a book")
-        book_id = int(input("Please enter the ID of the book you would like to check out"))
-    if select_option is None or isinstance(select_option, (int, float)):
+    elif select_option is None or isinstance(select_option, (int, float)):
         print("Invalid option please enter option again ")
         student_chooses_option()
 
 
 
 def display_student(students):
-    for student in students.values:
-        for item in student:
-            print("{} {} {} {} {} {} {}".format(
-            'Student ID: ' + item['studentID'],
+    student_data = students['Students']
+    for item in student_data:
+        print(
+            "---------------------------"
+
+            '\nStudent ID: ' + str(item['studentID']),
             '\nfirst_name: ' + item['first_name'],
-            '\nlast_name: ' + item['author'],
-            '\nbirthDate: ' + item['birthDate'],
+            '\nlast_name: ' + item['last_name'],
             '\nhouse ' + item['house'],
-            '\nemail: ' + item['return by'],
-            '\njoin date ' + item['join_date']
-        ))
+            '\nemail: ' + item['email'],
+            '\njoin date ' + item['join_date'],
 
+            "\n---------------------------"
+        )
 
-def run_delete_graduated_students():
-    print ("Deleting all graduate student records... ")
+def run_view_all_students():
     # try:
     url = f'http://127.0.0.1:5000/students'
     result = requests.get(url)
@@ -177,8 +174,5 @@ def run_delete_graduated_students():
 
 
 if __name__ == '__main__':
-    # run_student_id_loaned_books(6)
     welcome_to_library()
-    # get_all_books()
-    # get_student_id_loaned_books(6)
 
