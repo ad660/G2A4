@@ -1,20 +1,21 @@
 # G2A4
 
 CFG Assignment 4
-Hi this is the demo
+Group 2 -
+Slogan: \* _The sky is not the limit_ \*
 
 # Welcome to our repository
 
 In our repositiory we will have the following for your convenience:
 
-1. This readme will have 6 different markdown text formatting features
+1. This readme file will have 6 different markdown text formatting features
 2. We will demonstrate a scenario of how to work as a team on github
    - (git add, commit, pull and merge)
    - We will use meaningful commit messages
    - We will use appropriate branches to synchronise workflow
    - Adding files to branches
 3. Create a gitignore file
-4. Create a reqiurements.txt file and briefly explain what it's for
+4. Create a requirements.txt file and briefly explain what it's for
 
 ## **How to work as a team on github**
 
@@ -53,4 +54,26 @@ In our repositiory we will have the following for your convenience:
 
 [merge](/workflowImages/Merge%20.png)
 
-Hi, my name is Caila!
+---
+
+## About our team:
+
+### 1. Hanna Jankuniec:
+
+A service and management engineer, crazy cat lady and powerlifter. Obsessed about korean cusine, tech and romance novels.
+
+### 2. Faiza Javed:
+
+A recent Computing BSC graduate who is passionate about developing software and websites. I particularly enjoy problem solving and working on breaking down complex tasks.
+
+### 3. Jane Neave:
+
+A BSc Human Neuroscience graduate from the University of Birmingham, a huge animal lover and a work-in-progress runner!
+
+### 4. Carrera Leteta:
+
+A BSc Business Psychology graduate and a dedicated Cellist. I enjoy learning new things, strategising, problem solving and the great outdoors to name a few interests. Currently, I am plotting how I will take over the world after I graduate from CFG of course.
+
+### 5. Caila Ryner:
+
+A recent languages grad from the University of Cambridge and a Trainee Front-End Engineer. Outside of tech, you can find me ~~spending hours in the kitchen~~ developing new recipes! Most recently, I baked Boston cream doughnuts! 😋🍩
