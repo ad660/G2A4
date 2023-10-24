@@ -35,7 +35,7 @@ def add_book():
 
         return jsonify({"message": "Book added successfully"}), 200
 
-# To test this function follow these steps:
+# To test it follow these steps:
 
 # 1. Open Insomnia:
 #    Launch the Insomnia application on your computer.
