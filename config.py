@@ -1,3 +1,3 @@
 HOST = "localhost"
-USER = "root"
-PASSWORD = "Haneczka!2799"
+USER = "placeholder"
+PASSWORD = "placeholder"
