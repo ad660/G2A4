@@ -141,21 +141,22 @@ def student_chooses_option():
 
 
 def display_student(students):
-    for student in students.values:
-        for item in student:
-            print("{} {} {} {} {} {} {}".format(
-            'Student ID: ' + item['studentID'],
+    student_data = students['Students']
+    for item in student_data:
+        print(
+            "---------------------------"
+
+            '\nStudent ID: ' + str(item['studentID']),
             '\nfirst_name: ' + item['first_name'],
-            '\nlast_name: ' + item['author'],
-            '\nbirthDate: ' + item['birthDate'],
+            '\nlast_name: ' + item['last_name'],
             '\nhouse ' + item['house'],
-            '\nemail: ' + item['return by'],
-            '\njoin date ' + item['join_date']
-        ))
+            '\nemail: ' + item['email'],
+            '\njoin date ' + item['join_date'],
 
+            "\n---------------------------"
+        )
 
-def run_delete_graduated_students():
-    print ("Deleting all graduate student records... ")
+def run_view_all_students():
     # try:
     url = f'http://127.0.0.1:5000/students'
     result = requests.get(url)
