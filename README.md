@@ -73,3 +73,7 @@ A BSc Human Neuroscience graduate from the University of Birmingham, a huge anim
 ### 4. Carrera Leteta:
 
 A BSc Business Psychology graduate and a dedicated Cellist. I enjoy learning new things, strategising, problem solving and the great outdoors to name a few interests. Currently, I am plotting how I will take over the world after I graduate from CFG of course.
+
+### 5. Caila Ryner:
+
+A recent languages grad from the University of Cambridge and a Trainee Front-End Engineer. Outside of tech, you can find me ~~spending hours in the kitchen~~ developing new recipes! Most recently, I baked Boston cream doughnuts! 😋🍩
