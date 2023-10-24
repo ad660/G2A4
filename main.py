@@ -124,13 +124,13 @@ def welcome_to_library():
     student_id = int(input("To check out what books a student currently have on loan please "
                            "enter the number of their student ID : "))
     run_student_id_loaned_books(student_id)
-    print("There are several other options available for you to choose from.")
     student_chooses_option()
 
 
 def student_chooses_option():
+    print("If you would like to see all the books available please now select option 1: ")
     select_option = int(input("Please choose your option now: "))
-    print("If you would like to see all the books available please select option 1: ")
+
     if select_option == 1:
         print("You have chosen to see all books available")
         return get_all_books()
