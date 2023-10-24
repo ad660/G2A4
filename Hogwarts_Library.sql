@@ -1,12 +1,12 @@
-DROP DATABASE IF EXISTS Hogwarts_Library;
-CREATE DATABASE Hogwarts_Library;
-USE Hogwarts_Library;
+DROP DATABASE IF EXISTS hogwartslibrary;
+CREATE DATABASE hogwartslibrary;
+USE hogwartslibrary;
 
 -- Create a table to track book stock levels
 CREATE TABLE book_stock (
     stockID INT AUTO_INCREMENT UNIQUE PRIMARY KEY,
     stock_quantity INT NOT NULL,
-    stock_available INT NOT NULL
+    stock_available INT DEFAULT 0
 );
 
 -- Create a table to store information about books
@@ -36,16 +36,15 @@ CREATE TABLE students (
 
 -- Create a table to store information about books on loan
 CREATE TABLE loaned_books (
-    loanID INT AUTO_INCREMENT UNIQUE PRIMARY KEY,
+    loanID INT AUTO_INCREMENT PRIMARY KEY,
     bookID INT,
     studentID INT,
-    checked_out_date DATE NOT NULL,
-    return_due DATE,
-
-    overdue_fines DECIMAL(10, 2),
+    checked_out_date  DATE,
+    return_date DATE,
     FOREIGN KEY (bookID) REFERENCES books(bookID),
     FOREIGN KEY (studentID) REFERENCES students(studentID)
 );
+
 
 INSERT INTO book_stock (stock_quantity, stock_available)
 VALUES
@@ -104,11 +103,12 @@ VALUES
     ('Gregory', 'Goyle', '1979-11-02', 'Slytherin', 'gregory@example.com', '1979-09-01'); 
     
 
-INSERT INTO loaned_books (bookID, studentID, checked_out_date, return_due)
+INSERT INTO loaned_books (bookID, studentID, checked_out_date, return_date)
 VALUES
 	(1, 6, '2023-10-14', '2023-10-28'),
     (2, 10, '2023-10-16', '2023-10-30'),
     (2, 12, '2023-10-15', '2023-10-29');
+
     
 SELECT * FROM books;
 SELECT * FROM book_stock;
