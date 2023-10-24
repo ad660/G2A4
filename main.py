@@ -119,7 +119,7 @@ def welcome_to_library():
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠚⠛⠂⠀⠀⠀⠀⠀⢿⡦⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀''')
 
     student_name = input("Welcome, what is your name? ")
-    print(f"Welcome to the Hogwarts Library {student_name}!")
+    print(f"Welcome to the Hogwarts Library {student_name}! Your student id is ")
     student_id = int(input("To check out what books you current have out on loan please enter your student ID "))
     run_student_id_loaned_books(student_id)
 
@@ -128,6 +128,7 @@ def welcome_to_library():
     print("To check out a book please enter Select option 2 and enter the ID of the book you would like to check out")
     print("(please note: one you check out a book it will be unavailable to other students)")
     student_chooses_option()
+
 
 
 def student_chooses_option():
