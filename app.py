@@ -1,12 +1,12 @@
 from flask import Flask, jsonify, request
-from db_utils import RunQuery, add_new_book, get_books_by_student_id
+from db_utils import get_all_books, add_new_book, get_books_by_student_id
 
 app = Flask(__name__)
 
 
 @app.route('/books', methods=['GET'])
 def get_book():
-    data = {"Books": RunQuery()}
+    data = {"Books": get_all_books()}
     return jsonify(data), 200
 
 
