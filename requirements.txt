@@ -7,3 +7,15 @@ jsonify==0.5
 MarkupSafe==2.1.3
 mysql-connector==2.2.9
 Werkzeug==3.0.0
+
+
+# What are Git requirements:
+
+# A git requirement is essentially the requirement one needs to have on their computer or 
+# laptop which then allows them to use Git.
+# Those git requirements are:
+
+# To download and install GitHub onto your computer or Laptop (via the official website)
+# Use compatible operating systems such as MAC, Linux and Windows.
+# The user of Git should also have a good comprehension of command lines interface and how to implement the command in their terminal or, at least how to search the internet for the correct command lines to then use in their terminal.
+# The user will also need to have a repository hosting system such as GitHub or GitLab. 
