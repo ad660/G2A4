@@ -78,6 +78,11 @@ A BSc Business Psychology graduate and a dedicated Cellist. I enjoy learning new
 
 A recent languages grad from the University of Cambridge and a Trainee Front-End Engineer. Outside of tech, you can find me ~~spending hours in the kitchen~~ developing new recipes! Most recently, I baked Boston cream doughnuts! 😋🍩
 
+
+### 6. Ayana Douglas:
+I am passionate about developing my technicalskills ad capabilities, and I'm really excited to see where tech will be in the next 5 years. I enjoy food and love gaming, and I have a really cute dog named Bengal.
+
+
 # What is a Gitignore ?
 
 A gitignore (.gitignore) is a file that is usually used in GIT to specify files and folder (Directories) that are to be ignored and therefore not tracked by version control. In other words a Gitignore file is utilised to exclude files that were created during the initial development stages. Some examples of such files are:
