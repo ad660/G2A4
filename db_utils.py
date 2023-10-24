@@ -69,7 +69,7 @@ def get_books_by_student_id(student_id):
         if db_connection:
             db_connection.close()
             print('Connection closed')
-    
+
     return student_books_on_loan
 
 
