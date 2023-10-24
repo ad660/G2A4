@@ -13,6 +13,18 @@ def _connect_to_db(db_name):
     return cnx
 
 
+
+def RunQuery():
+    conn = mysql.connector.connect(host=HOST, user=USER, password=PASSWORD, database="hogwartslibrary")
+    connection = conn.cursor()
+    connection.execute("select * from books")
+    results = connection.fetchall()
+    items = []
+    for row in results:
+        items.append({'title': row[1], 'author': row[2], 'year_published': row[3],
+                      'subject': row[4], 'description': row[5], 'age_restrict': row[6], 'stockID': row[7]})
+    return items
+
 def get_all_books():
     try:
         db_name = 'hogwartslibrary'
@@ -43,6 +55,7 @@ def get_all_books():
             print('Connection closed')
 
     return books_in_library
+
 
 
 # GET BOOKS ON LOAN BY STUDENT ID
