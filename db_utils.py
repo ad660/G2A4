@@ -13,6 +13,36 @@ def _connect_to_db(db_name):
     return cnx
 
 
+def get_all_students():
+    try:
+        db_name = 'hogwartslibrary'
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+        print(f'Connected to database: {db_name}')
+
+        query = """ 
+        SELECT s.* FROM students s
+        """
+
+        cur.execute(query)
+        students = cur.fetchall()
+        hogwarts_students = []
+        for student in students:
+            hogwarts_students.append({'first_name': student[1], 'last_name': student[2],
+                                     'birthDate': student[3], 'house': student[4],
+                                     'email': student[5], 'join_date': student[6]})
+        print(hogwarts_students)
+        cur.close()
+
+    except Exception as exc:
+        print(exc)
+
+    finally:
+        if db_connection:
+            db_connection.close()
+            print('Connection closed')
+
+    return hogwarts_students
 
 def RunQuery():
     conn = mysql.connector.connect(host=HOST, user=USER, password=PASSWORD, database="hogwartslibrary")

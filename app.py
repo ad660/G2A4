@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from db_utils import get_all_books, add_new_book, get_books_by_student_id
+from db_utils import get_all_books, add_new_book, get_books_by_student_id, get_all_students
 
 app = Flask(__name__)
 
@@ -32,6 +32,28 @@ def add_book():
         add_new_book(title, author, year_published, subject, description, age_restrict, stockID)
 
         return jsonify({"message": "Book added successfully"}), 200
+
+
+@app.route('/students', methods=['GET'])
+def get_students():
+    data = {"Students": get_all_students()}
+    return jsonify(data), 200
+
+#
+# @app.route('/students/delete_graduated, methods=['DELETE'])
+# def delete_graduated_students():
+#     if request.method == 'DELETE':
+#         data = request.get_json()
+#         title = data.get('title')
+#         author = data.get('author')
+#         year_published = data.get('year_published')
+#         subject = data.get('subject')
+#         description = data.get('description')
+#         age_restrict = data.get('age_restrict')
+#         stockID = data.get('stockID')
+#
+#         return jsonify({"message": "Students deleted successfully"}), 200
+
 
 if __name__ == '__main__':
     app.run(debug=True)
