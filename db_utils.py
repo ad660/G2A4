@@ -13,6 +13,7 @@ def _connect_to_db(db_name):
     return cnx
 
 
+
 def RunQuery():
     conn = mysql.connector.connect(host=HOST, user=USER, password=PASSWORD, database="hogwartslibrary")
     connection = conn.cursor()
@@ -23,6 +24,38 @@ def RunQuery():
         items.append({'title': row[1], 'author': row[2], 'year_published': row[3],
                       'subject': row[4], 'description': row[5], 'age_restrict': row[6], 'stockID': row[7]})
     return items
+
+def get_all_books():
+    try:
+        db_name = 'hogwartslibrary'
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+        print(f'Connected to database: {db_name}')
+
+        query = """ 
+        SELECT b.* FROM books b
+        """
+
+        cur.execute(query)
+        results = cur.fetchall()
+        books_in_library = []
+        for item in results:
+            books_in_library.append({'title': item[1], 'author': item[2],
+                                     'year_published': item[3], 'subject': item[4],
+                                     'description': item[5], 'age_restrict': item[6], 'stockID': item[7]})
+        print(books_in_library)
+        cur.close()
+
+    except Exception as exc:
+        print(exc)
+
+    finally:
+        if db_connection:
+            db_connection.close()
+            print('Connection closed')
+
+    return books_in_library
+
 
 
 # GET BOOKS ON LOAN BY STUDENT ID
@@ -72,9 +105,34 @@ def get_books_by_student_id(student_id):
 
     return student_books_on_loan
 
+def add_new_book(title, author, year_published, subject, description, age_restrict, stockID):
+    try:
+        db_name = 'hogwartslibrary'
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+        print(f'Connected to database: {db_name}')
+
+        query = """
+        INSERT INTO books (title, author, year_published, subject, description, age_restrict, stockID)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+        """
+
+        data = (title, author, year_published, subject, description, age_restrict, stockID)
+        cur.execute(query, data)
+        db_connection.commit()
+
+        print(f'Book added successfully.')
+
+    except Exception as e:
+        print(f'Failed to add book. Error: {e}')
+
+    finally:
+        if db_connection:
+            db_connection.close()
+            print('Connection closed')
 
 def main():
-    # RunQuery()
+    get_all_books()
     get_books_by_student_id(10)
 
 
