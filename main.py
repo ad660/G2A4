@@ -128,7 +128,7 @@ def welcome_to_library():
 
 
 def student_chooses_option():
-    print("If you would like to see all the books available please select option 1: ")
+    print("If you would like to see all the books available please now select option 1: ")
     select_option = int(input("Please choose your option now: "))
 
     if select_option == 1:
