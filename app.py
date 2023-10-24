@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from db_utils import get_all_books, add_new_book, get_books_by_student_id, add_student
 from db_utils import get_all_books, add_new_book, get_books_by_student_id, get_all_students, delete_graduated_students
 
 app = Flask(__name__)
@@ -15,8 +16,6 @@ def get_loan_books_for_student(student_id):
     student_loaned_books = get_books_by_student_id(student_id)
     app.json.sort_keys = False
     return jsonify(student_loaned_books), 200
-
-
 # e.g. http://127.0.0.1:5001/books_on_loan/10
 
 @app.route('/add_book', methods=['POST'])
@@ -35,7 +34,24 @@ def add_book():
 
         return jsonify({"message": "Book added successfully"}), 200
 
-# To test it follow these steps:
+
+
+@app.route('/add_student', methods=['PUT'])
+def update_student():
+    if request.method == 'PUT':
+        data = request.get_json()
+        first_name = data.get('first_name')
+        last_name = data.get('last_name')
+        birth_date = data.get('birth_date')
+        house = data.get('house')
+        email = data.get('email')
+        join_date = data.get('join_date')
+
+        add_student(first_name, last_name, birth_date, house, email, join_date)
+
+        return jsonify({"message": "Student added successfully"}), 200
+
+# To test this function follow these steps:
 
 # 1. Open Insomnia:
 #    Launch the Insomnia application on your computer.
@@ -75,6 +91,7 @@ def add_book():
 
 # Note: Make sure your Flask application is running (e.g., `python app.py`) while testing with Insomnia.
 #       Additionally, ensure that your Flask routes are correctly defined in `app.py`.
+
 
 @app.route('/students', methods=['GET'])
 def get_students():
