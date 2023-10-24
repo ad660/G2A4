@@ -2,11 +2,11 @@ import requests
 import json
 
 
-# @app.route('/books', methods=['GET'])
-# def get_books():
-#     if request.method=='GET':
-#         data={"data":"testing"}
-#         return jsonify(data)
+ @app.route('/books', methods=['GET'])
+ def get_books():
+     if request.method=='GET':
+         data={"data":"testing"}
+         return jsonify(data)
 
 
 # -- RUN: GET LOANED BOOKS BY STUDENT ID --
