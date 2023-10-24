@@ -3,13 +3,6 @@ import json
 from db_utils import _connect_to_db
 
 
-# app = Flask(__name__)
-#  @app.route('/books', methods=['GET'])
-#  def get_books():
-#     if request.method=='GET':
-#         data={"data":"testing"}
-#         return jsonify(data)
-#
 
 # -- RUN: GET LOANED BOOKS BY STUDENT ID --
 
@@ -151,9 +144,41 @@ def student_chooses_option():
 
 
 
+def display_student(students):
+    for student in students.values:
+        for item in student:
+            print("{} {} {} {} {} {} {}".format(
+            'Student ID: ' + item['studentID'],
+            '\nfirst_name: ' + item['first_name'],
+            '\nlast_name: ' + item['author'],
+            '\nbirthDate: ' + item['birthDate'],
+            '\nhouse ' + item['house'],
+            '\nemail: ' + item['return by'],
+            '\njoin date ' + item['join_date']
+        ))
+
+
+def run_delete_graduated_students():
+    print ("Deleting all graduate student records... ")
+    # try:
+    url = f'http://127.0.0.1:5000/students'
+    result = requests.get(url)
+    if result.status_code == 200:
+        data = result.json()
+        print("Displaying Students data: ")
+        display_student(data)
+        return data
+    else:
+        raise Exception(f'Request failed with status code: {result.status_code}')
+    # except Exception as e:
+    #     print(f'Error occurred: {e}')
+    #     return None
+
+
+
 if __name__ == '__main__':
     # run_student_id_loaned_books(6)
     welcome_to_library()
     # get_all_books()
     # get_student_id_loaned_books(6)
-    
+

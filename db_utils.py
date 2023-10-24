@@ -13,7 +13,7 @@ def _connect_to_db(db_name):
     return cnx
 
 
-def get_all_books():
+def get_all_students():
     try:
         db_name = 'hogwartslibrary'
         db_connection = _connect_to_db(db_name)
@@ -21,18 +21,15 @@ def get_all_books():
         print(f'Connected to database: {db_name}')
 
         query = """ 
-        SELECT b.* FROM books b
+        SELECT s.* FROM students s
         """
 
         cur.execute(query)
-        results = cur.fetchall()
-        books_in_library = []
-        for item in results:
-            books_in_library.append({'title': item[1], 'author': item[2],
-                                     'year_published': item[3], 'subject': item[4],
-                                     'description': item[5], 'age_restrict': item[6], 'stockID': item[7]})
-        print(books_in_library)
+        students = cur.fetchall()
+        hogwarts_students = _map_students_values(students)
+        print(hogwarts_students)
         cur.close()
+
 
     except Exception as exc:
         print(exc)
@@ -42,7 +39,39 @@ def get_all_books():
             db_connection.close()
             print('Connection closed')
 
-    return books_in_library
+    return hogwarts_students
+
+# GET BOOKS ON LOAN BY STUDENT ID
+def _map_students_values(students_list):
+    mapped = []
+    for student in students_list:
+        mapped.append(
+            {
+                'first_name': student[1],
+                'last_name': student[2],
+                'birthDate': student[3].strftime("%d-%m-%Y"),
+                'house':student[4],
+                'email': student[5],
+                'join_date': student[6].strftime("%d-%m-%Y")
+            }
+        )
+    return (mapped)
+
+
+
+
+def RunQuery():
+    conn = mysql.connector.connect(host=HOST, user=USER, password=PASSWORD, database="hogwartslibrary")
+    connection = conn.cursor()
+    connection.execute("select * from books")
+    results = connection.fetchall()
+    items = []
+    for row in results:
+        items.append({'title': row[1], 'author': row[2], 'year_published': row[3],
+                      'subject': row[4], 'description': row[5], 'age_restrict': row[6], 'stockID': row[7]})
+    return items
+  
+
 
 
 def get_all_books():
@@ -149,6 +178,36 @@ def add_new_book(title, author, year_published, subject, description, age_restri
         if db_connection:
             db_connection.close()
             print('Connection closed')
+
+
+
+def delete_graduated_students ():
+    try:
+        db_name = 'hogwartslibrary'
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+        print(f'Connected to database: {db_name}')
+
+        query = """DELETE  s, lb FROM students s INNER JOIN loaned_books lb WHERE floor(datediff(now(),s.birthDate) / 
+        365.25)  >= 18;
+        SELECT * FROM students;
+        """
+
+        cur.execute(query)
+        students = cur.fetchall()
+        student_list = _map_students_values(students)
+        cur.close()
+
+        print(f'Students deleted successfully.')
+
+    except Exception as e:
+        print(f'Failed to add book. Error: {e}')
+
+    finally:
+        if db_connection:
+            db_connection.close()
+            print('Connection closed')
+    return (student_list)
 
 
 def main():
