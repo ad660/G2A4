@@ -92,6 +92,7 @@ def get_all_books():
             books_in_library.append({'title': item[1], 'author': item[2],
                                      'year_published': item[3], 'subject': item[4],
                                      'description': item[5], 'age_restrict': item[6], 'stockID': item[7]})
+        print(books_in_library)
         cur.close()
 
     except Exception as exc:
@@ -152,7 +153,6 @@ def get_books_by_student_id(student_id):
 
     return student_books_on_loan
 
-
 def add_new_book(title, author, year_published, subject, description, age_restrict, stockID):
     try:
         db_name = 'hogwartslibrary'
@@ -178,6 +178,29 @@ def add_new_book(title, author, year_published, subject, description, age_restri
         if db_connection:
             db_connection.close()
             print('Connection closed')
+
+
+def add_student(first_name, last_name, birthDate, house, email, join_date):
+    try:
+        db_name = 'hogwartslibrary'
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+        print(f'Connected to database: {db_name}')
+
+        query = """
+                INSERT INTO students (first_name, last_name, birthDate, house, email, join_date)
+                VALUES (%s, %s, %s, %s, %s, %s)
+                """
+        cur.execute(query, (first_name, last_name, birthDate, house, email, join_date))
+        db_connection.commit()
+    except Exception as e:
+        print(f'Failed to add student. Error: {e}')
+
+    finally:
+        if db_connection:
+            db_connection.close()
+            print('Connection closed')
+
 
 
 
@@ -213,6 +236,7 @@ def delete_graduated_students ():
 def main():
     get_all_books()
     get_books_by_student_id(10)
+    add_student("K", "O", "1998-07-12", "Slytherin", "KO@example.com", "2023-10-24")
 
 
 if __name__ == '__main__':
