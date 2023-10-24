@@ -91,6 +91,7 @@ A git requirement is essentially the requirement one needs to have on their comp
 Those git requirements are:
 
 * To download and install GitHub onto your computer or Laptop (via the official website)
-* Use compatible operating systems such as MAC, Linux and Windows.
-* The user of Git should also have a good comprehension of command lines interface and how to implement the command in their terminal or, at least how to search the internet for the correct command lines to then use in their terminal.
-* The user will also need to have a repository hosting system such as GitHub or GitLab.
+* Use compatible operating systems such as MAC, Linux and Windows
+* The user of Git should also have a good comprehension of command lines interface and how to implement the command 
+  in their terminal or, at least how to search the internet for the correct command lines to then use in their terminal
+* The user will also need to have a repository hosting system such as GitHub or GitLab
