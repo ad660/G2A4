@@ -42,38 +42,51 @@ def run_student_id_loaned_books():
 # -- END: GET LOANED BOOKS BY STUDENT ID --
 
 
-def display_student(student):
-    for item in student:
-        print("{} {} {} {} {} {} {}".format(
-            'Student ID: ' + str(item['studentID']),
-            '\nfirst_name: ' + str(item['first_name']),
-            '\nlast_name: ' + str(item['author']),
-            '\nbirthDate: ' + str(item['birthDate']),
-            '\nhouse ' + str(item['house']),
-            '\nemail: ' + str(item['return by']),
-            '\njoin date ' + str(item['join_date'])
+def display_student(students):
+    for student in students.values:
+        for item in student:
+            print("{} {} {} {} {} {} {}".format(
+            'Student ID: ' + item['studentID'],
+            '\nfirst_name: ' + item['first_name'],
+            '\nlast_name: ' + item['author'],
+            '\nbirthDate: ' + item['birthDate'],
+            '\nhouse ' + item['house'],
+            '\nemail: ' + item['return by'],
+            '\njoin date ' + item['join_date']
         ))
 
 
 def run_delete_graduated_students():
-    print ("Deleting all graduate student records: ")
-    try:
-        url = f'http://127.0.0.1:5000/students'
-        result = requests.get(url)
-        if result.status_code == 200:
-            data = result.json()
-            print("Displaying new result set: ")
-            display_student(data)
-            return data
-        else:
-            raise Exception(f'Request failed with status code: {result.status_code}')
-    except Exception as e:
-        print(f'Error occurred: {e}')
-        return None
+    print ("Deleting all graduate student records... ")
+    # try:
+    url = f'http://127.0.0.1:5000/students'
+    result = requests.get(url)
+    if result.status_code == 200:
+        data = result.json()
+        print("Displaying Students data: ")
+        display_student(data)
+        return data
+    else:
+        raise Exception(f'Request failed with status code: {result.status_code}')
+    # except Exception as e:
+    #     print(f'Error occurred: {e}')
+    #     return None
 
 
 
 if __name__ == '__main__':
-    # run_student_id_loaned_books()
-    run_delete_graduated_students()
-    
+
+    print ("Hello and Welcome to Hogwarts Library")
+
+    print("Here are your options:")
+    print ("1. View loaned books by student ID")
+    print ("2. Delete graduate records")
+    option = int(input("What would you like to do? 1-5: "))
+
+    if option == 1:
+        run_student_id_loaned_books()
+    if option == 2:
+        run_delete_graduated_students()
+
+
+
