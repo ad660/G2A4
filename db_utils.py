@@ -13,36 +13,36 @@ def _connect_to_db(db_name):
     return cnx
 
 
-# def get_all_books():
-#     try:
-#         db_name = 'hogwartslibrary'
-#         db_connection = _connect_to_db(db_name)
-#         cur = db_connection.cursor()
-#         print(f'Connected to database: {db_name}')
+def get_all_books():
+    try:
+        db_name = 'hogwartslibrary'
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+        print(f'Connected to database: {db_name}')
 
-#         query = """ 
-#         SELECT b.* FROM books b
-#         """
+        query = """ 
+        SELECT b.* FROM books b
+        """
 
-#         cur.execute(query)
-#         results = cur.fetchall()
-#         books_in_library = []
-#         for item in results:
-#             books_in_library.append({'title': item[1], 'author': item[2],
-#                                      'year_published': item[3], 'subject': item[4],
-#                                      'description': item[5], 'age_restrict': item[6], 'stockID': item[7]})
-#         print(books_in_library)
-#         cur.close()
+        cur.execute(query)
+        results = cur.fetchall()
+        books_in_library = []
+        for item in results:
+            books_in_library.append({'title': item[1], 'author': item[2],
+                                     'year_published': item[3], 'subject': item[4],
+                                     'description': item[5], 'age_restrict': item[6], 'stockID': item[7]})
+        print(books_in_library)
+        cur.close()
 
-#     except Exception as exc:
-#         print(exc)
+    except Exception as exc:
+        print(exc)
 
-#     finally:
-#         if db_connection:
-#             db_connection.close()
-#             print('Connection closed')
+    finally:
+        if db_connection:
+            db_connection.close()
+            print('Connection closed')
 
-#     return books_in_library
+    return books_in_library
 
 
 # GET BOOKS ON LOAN BY STUDENT ID
