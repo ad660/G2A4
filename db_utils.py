@@ -70,6 +70,9 @@ def RunQuery():
         items.append({'title': row[1], 'author': row[2], 'year_published': row[3],
                       'subject': row[4], 'description': row[5], 'age_restrict': row[6], 'stockID': row[7]})
     return items
+  
+
+
 
 def get_all_books():
     try:
@@ -89,7 +92,6 @@ def get_all_books():
             books_in_library.append({'title': item[1], 'author': item[2],
                                      'year_published': item[3], 'subject': item[4],
                                      'description': item[5], 'age_restrict': item[6], 'stockID': item[7]})
-        print(books_in_library)
         cur.close()
 
     except Exception as exc:
@@ -101,7 +103,6 @@ def get_all_books():
             print('Connection closed')
 
     return books_in_library
-
 
 
 # GET BOOKS ON LOAN BY STUDENT ID
@@ -151,6 +152,7 @@ def get_books_by_student_id(student_id):
 
     return student_books_on_loan
 
+
 def add_new_book(title, author, year_published, subject, description, age_restrict, stockID):
     try:
         db_name = 'hogwartslibrary'
@@ -176,6 +178,7 @@ def add_new_book(title, author, year_published, subject, description, age_restri
         if db_connection:
             db_connection.close()
             print('Connection closed')
+
 
 
 def delete_graduated_students ():
@@ -205,6 +208,7 @@ def delete_graduated_students ():
             db_connection.close()
             print('Connection closed')
     return (student_list)
+
 
 def main():
     get_all_books()
