@@ -173,7 +173,7 @@ def add_new_book(title, author, year_published, subject, description, age_restri
     finally:
         if db_connection:
             db_connection.close()
-            print('Connection closed')
+            print('Connection closed: add new book')
 
 
 def add_student(first_name, last_name, birthDate, house, email, join_date):
@@ -195,7 +195,7 @@ def add_student(first_name, last_name, birthDate, house, email, join_date):
     finally:
         if db_connection:
             db_connection.close()
-            print('Connection closed')
+            print('Connection closed: add new student')
 
 
 def delete_graduated_students ():
@@ -223,7 +223,7 @@ def delete_graduated_students ():
     finally:
         if db_connection:
             db_connection.close()
-            print('Connection closed')
+            print('Connection closed: delete grad student')
     return (student_list)
 
 
