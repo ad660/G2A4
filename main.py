@@ -43,7 +43,14 @@ def welcome_to_library():
     librarian_name = input("Warm welcome back Hogwartian Librarian! Please sign in with your name: ")
     print(f"Welcome to the Hogwarts Library {librarian_name.title()}!")
     print()
-    librarian_chooses_option()
+    while True:
+        answer = input('Would you like to see the options available to you? [y] = continue [n] = quit: ')
+        if answer.lower() == 'y':
+            librarian_chooses_option()
+        elif answer.lower() == 'n':
+            print()
+            print('Thank you using our service. Keep making magic! Goodbye for now!')
+            break
 
 
 def librarian_chooses_option():
