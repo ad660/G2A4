@@ -13,6 +13,23 @@ def _connect_to_db(db_name):
     return cnx
 
 
+def _map_students_values(students_list):
+    mapped = []
+    for student in students_list:
+        mapped.append(
+            {
+                'studentID':  student[0],
+                'first_name': student[1],
+                'last_name': student[2],
+                # 'birthDate': student[3].strftime("%d-%m-%Y"),
+                # 'house': student[4],
+                # 'email': student[5],
+                # 'join_date': student[6].strftime("%d-%m-%Y")
+            }
+        )
+    return mapped
+
+
 def get_all_students():
     try:
         db_name = 'hogwartslibrary'
@@ -37,29 +54,11 @@ def get_all_students():
     finally:
         if db_connection:
             db_connection.close()
-            print('Connection closed')
+            print('Connection closed: get students')
 
     return hogwarts_students
 
 # GET BOOKS ON LOAN BY STUDENT ID
-
-def _map_students_values(students_list):
-    mapped = []
-    for student in students_list:
-        mapped.append(
-            {
-                'studentID':  student[0],
-                'first_name': student[1],
-                'last_name': student[2],
-                'birthDate': student[3].strftime("%d-%m-%Y"),
-                'house': student[4],
-                'email': student[5],
-                'join_date': student[6].strftime("%d-%m-%Y")
-            }
-        )
-    return (mapped)
-
-
 def get_all_books():
     try:
         db_name = 'hogwartslibrary'
@@ -220,6 +219,7 @@ def delete_graduated_students ():
 
 
 def main():
+    get_all_students()
     get_all_books()
     get_books_by_student_id(10)
     add_student("K", "O", "1998-07-12", "Slytherin", "KO@example.com", "2023-10-24")
