@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
-from db_utils import get_all_books, add_new_book, get_books_by_student_id, add_student
-from db_utils import get_all_books, add_new_book, get_books_by_student_id, get_all_students, delete_graduated_students
+from db_utils import (get_all_students, get_all_books, get_books_by_student_id,
+                      add_new_book, add_student, delete_graduated_students)
 
 app = Flask(__name__)
 
