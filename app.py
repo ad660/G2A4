@@ -18,6 +18,7 @@ def get_loan_books_for_student(student_id):
     return jsonify(student_loaned_books), 200
 # e.g. http://127.0.0.1:5001/books_on_loan/10
 
+
 @app.route('/add_book', methods=['POST'])
 def add_book():
     if request.method == 'POST':
@@ -75,6 +76,7 @@ def add_book():
 # Note: Make sure your Flask application is running (e.g., `python app.py`) while testing with Insomnia.
 #       Additionally, ensure that your Flask routes are correctly defined in `app.py`.
 
+
 @app.route('/add_student', methods=['PUT'])
 def update_student():
     if request.method == 'PUT':
@@ -91,12 +93,12 @@ def update_student():
         return jsonify({"message": "Student added successfully"}), 200
 
 
-
 @app.route('/students', methods=['GET'])
 def get_students():
     delete_graduated_students()
     students_data = {"Students": get_all_students()}
     return jsonify(students_data), 200
+
 
 if __name__ == '__main__':
     app.run(debug=True)
