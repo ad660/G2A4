@@ -85,11 +85,6 @@ def get_all_books():
         if result.status_code == 200:
             data = result.json()
             return display_all_books(data)
-            # if isinstance(data, dict):
-            #     for key, value in data.items():
-            #         print(f"{key}: {value}")
-            # else:
-            #     raise Exception("Invalid data format: Data should be a dictionary.")
         else:
             raise Exception(f'Request failed with status code: {result.status_code}')
     except Exception as e:
