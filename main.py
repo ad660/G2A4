@@ -47,18 +47,22 @@ def welcome_to_library():
 
 
 def librarian_chooses_option():
-    print("If you would like to see all the books available please now select option 1: ")
-    select_option = int(input("Please choose your option now: "))
-    if select_option == 1:
-        print("You have chosen to see all books available")
-        return get_all_books()
-    elif select_option == 2:
-        print('There are multiple students with books on loan, their student ID\'s are: 6, 10, 12')
-        student_id = int(input("To check out what books a student currently have on loan please "
-                               "enter the number of their student ID : "))
-        run_student_id_loaned_books(student_id)
+    select_option = input("Please choose your option now: ")
+    if select_option == str(1):
+        print("You have chosen to see all books available.")
+        return run_get_all_books()
+    elif select_option == str(2):
+        print("You have chosen to see all students.")
+        return run_view_all_students()
+    elif select_option == str(3):
+        print("You have chosen to see loaned books by student ID.")
+        return run_student_id_loaned_books()
     elif select_option is None or isinstance(select_option, (int, float)):
         print("Invalid option please enter option again ")
+    else:
+        print()
+        print('There seems to have been an error please select again.')
+        print()
 
 
 def display_all_books(result):
@@ -89,8 +93,6 @@ def run_get_all_books():
             raise Exception(f'Request failed with status code: {result.status_code}')
     except Exception as e:
         print(f'Error occurred: {e}')
-
-
 
 
 def display_all_students(result):
@@ -164,8 +166,8 @@ def run_student_id_loaned_books():
 
 
 if __name__ == '__main__':
-    # welcome_to_library()
+    welcome_to_library()
     # run_student_id_loaned_books()
-    # get_all_books()
-    run_view_all_students()
+    # run_get_all_books()
+    # run_view_all_students()
 
