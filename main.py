@@ -1,7 +1,4 @@
 import requests
-import json
-from db_utils import _connect_to_db
-
 
 
 # -- RUN: GET LOANED BOOKS BY STUDENT ID --
