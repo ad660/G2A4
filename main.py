@@ -111,6 +111,7 @@ def run_view_all_students():
     #     print(f'Error occurred: {e}')
     #     return None
 
+
 def display_loaned_books(result):
     # for key, values in result.items():
     for value in result:
@@ -124,7 +125,7 @@ def display_loaned_books(result):
             )
         )
         print('-' * 30)
-        
+
 
 def get_student_id_loaned_books(student_id):
     try:
@@ -132,7 +133,7 @@ def get_student_id_loaned_books(student_id):
         result = requests.get(url)
         if result.status_code == 200:
             data = result.json()
-            return data
+            return display_loaned_books(data)
         else:
             raise Exception(f'Request failed with status code: {result.status_code}')
     except Exception as e:
@@ -141,9 +142,9 @@ def get_student_id_loaned_books(student_id):
 
 
 def run_student_id_loaned_books():
-    student_id = input('You would like to check the loaned books of a student? What is their Student ID:  ')
-    loaned_books = get_student_id_loaned_books(int(student_id))
-    display_loaned_books(loaned_books)
+    print('There are currently multiple students with books on loan, their student ID\'s are: 6, 10, 12')
+    student_id = input('To view what books a student currently has on loan please enter their student ID number: ')
+    return get_student_id_loaned_books(student_id)
 
 
 # def librarian_adds_a_book():
@@ -153,4 +154,5 @@ def run_student_id_loaned_books():
 
 
 if __name__ == '__main__':
-    welcome_to_library()
+    # welcome_to_library()
+    run_student_id_loaned_books()
