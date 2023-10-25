@@ -58,6 +58,12 @@ def librarian_chooses_option():
     elif select_option == str(3):
         print("You have chosen to see loaned books by student ID.")
         return run_student_id_loaned_books()
+    elif select_option == str(4):
+        print("You have chosen to add a new student's information to the database.")
+        return  # librarian_adds_a_student()
+    elif select_option == str(5):
+        print("You have chosen to add a new book to the database.")
+        return  # librarian_adds_a_book()
     elif select_option is None or isinstance(select_option, (int, float)):
         print("Invalid option please enter option again ")
     else:
@@ -72,6 +78,7 @@ def view_librarian_options():
     print("Select option 2 to see all students. [2]")
     print("Select option 3 to see a students loaned books by Student ID. [3]")
     print("Select option 4 to add a new student. [4]")
+    print("Select option 4 to add a new student. [5]")
     print()
 
 
