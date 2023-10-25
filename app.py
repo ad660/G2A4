@@ -3,7 +3,7 @@ from db_utils import (get_all_students, get_all_books, get_books_by_student_id,
                       add_new_book, add_student, delete_graduated_students)
 
 app = Flask(__name__)
-
+app.json.sort_keys = False
 
 @app.route('/books', methods=['GET'])
 def get_book():
