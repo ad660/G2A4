@@ -13,6 +13,23 @@ def _connect_to_db(db_name):
     return cnx
 
 
+def _map_students_values(students_list):
+    mapped = []
+    for student in students_list:
+        mapped.append(
+            {
+                'studentID':  student[0],
+                'first_name': student[1],
+                'last_name': student[2],
+                # 'birthDate': student[3].strftime("%d-%m-%Y"),
+                # 'house': student[4],
+                # 'email': student[5],
+                # 'join_date': student[6].strftime("%d-%m-%Y")
+            }
+        )
+    return mapped
+
+
 def get_all_students():
     try:
         db_name = 'hogwartslibrary'
@@ -27,9 +44,7 @@ def get_all_students():
         cur.execute(query)
         students = cur.fetchall()
         hogwarts_students = _map_students_values(students)
-        print(hogwarts_students)
         cur.close()
-
 
     except Exception as exc:
         print(exc)
@@ -37,27 +52,27 @@ def get_all_students():
     finally:
         if db_connection:
             db_connection.close()
-            print('Connection closed')
+            print('Connection closed: get students')
 
     return hogwarts_students
 
-# GET BOOKS ON LOAN BY STUDENT ID
 
-def _map_students_values(students_list):
+def _map_all_book_values(all_books):
     mapped = []
-    for student in students_list:
+    for item in all_books:
         mapped.append(
             {
-                'studentID':  student[0],
-                'first_name': student[1],
-                'last_name': student[2],
-                'birthDate': student[3].strftime("%d-%m-%Y"),
-                'house': student[4],
-                'email': student[5],
-                'join_date': student[6].strftime("%d-%m-%Y")
+                'bookID': item[0],
+                'title': item[1],
+                'author': item[2],
+                'year_published': item[3],
+                'subject': item[4],
+                'description': item[5],
+                'age_restrict': item[6],
+                'stockID': item[7]
             }
         )
-    return (mapped)
+    return mapped
 
 
 def get_all_books():
@@ -73,12 +88,7 @@ def get_all_books():
 
         cur.execute(query)
         results = cur.fetchall()
-        books_in_library = []
-        for item in results:
-            books_in_library.append({'title': item[1], 'author': item[2],
-                                     'year_published': item[3], 'subject': item[4],
-                                     'description': item[5], 'age_restrict': item[6], 'stockID': item[7]})
-        print(books_in_library)
+        books_in_library = _map_all_book_values(results)
         cur.close()
 
     except Exception as exc:
@@ -87,12 +97,11 @@ def get_all_books():
     finally:
         if db_connection:
             db_connection.close()
-            print('Connection closed')
+            print('Connection closed: get all books')
 
     return books_in_library
 
 
-# GET BOOKS ON LOAN BY STUDENT ID
 def _map_values(student_loaned_books):
     mapped = []
     for item in student_loaned_books:
@@ -135,9 +144,10 @@ def get_books_by_student_id(student_id):
     finally:
         if db_connection:
             db_connection.close()
-            print('Connection closed')
+            print('Connection closed: get loaned books/studentID')
 
     return student_books_on_loan
+
 
 def add_new_book(title, author, year_published, subject, description, age_restrict, stockID):
     try:
@@ -163,7 +173,7 @@ def add_new_book(title, author, year_published, subject, description, age_restri
     finally:
         if db_connection:
             db_connection.close()
-            print('Connection closed')
+            print('Connection closed: add new book')
 
 
 def add_student(first_name, last_name, birthDate, house, email, join_date):
@@ -185,9 +195,7 @@ def add_student(first_name, last_name, birthDate, house, email, join_date):
     finally:
         if db_connection:
             db_connection.close()
-            print('Connection closed')
-
-
+            print('Connection closed: add new student')
 
 
 def delete_graduated_students ():
@@ -215,15 +223,16 @@ def delete_graduated_students ():
     finally:
         if db_connection:
             db_connection.close()
-            print('Connection closed')
+            print('Connection closed: delete grad student')
     return (student_list)
 
 
-def main():
+def run_db_utils():
+    get_all_students()
     get_all_books()
     get_books_by_student_id(10)
-    add_student("K", "O", "1998-07-12", "Slytherin", "KO@example.com", "2023-10-24")
+    # add_student("K", "O", "1998-07-12", "Slytherin", "KO@example.com", "2023-10-24")
 
 
 if __name__ == '__main__':
-    main()
+    run_db_utils()
