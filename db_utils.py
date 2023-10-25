@@ -46,7 +46,6 @@ def get_all_students():
         hogwarts_students = _map_students_values(students)
         cur.close()
 
-
     except Exception as exc:
         print(exc)
 
@@ -90,7 +89,6 @@ def get_all_books():
         cur.execute(query)
         results = cur.fetchall()
         books_in_library = _map_all_book_values(results)
-        print(books_in_library)
         cur.close()
 
     except Exception as exc:
@@ -150,6 +148,7 @@ def get_books_by_student_id(student_id):
 
     return student_books_on_loan
 
+
 def add_new_book(title, author, year_published, subject, description, age_restrict, stockID):
     try:
         db_name = 'hogwartslibrary'
@@ -197,8 +196,6 @@ def add_student(first_name, last_name, birthDate, house, email, join_date):
         if db_connection:
             db_connection.close()
             print('Connection closed')
-
-
 
 
 def delete_graduated_students ():
