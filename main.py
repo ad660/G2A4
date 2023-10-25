@@ -41,7 +41,7 @@ def welcome_to_library():
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠚⠛⠂⠀⠀⠀⠀⠀⢿⡦⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀''')
 
     librarian_name = input("Warm welcome back Hogwartian Librarian! Please sign in with your name: ")
-    print(f"Welcome to the Hogwarts Library {librarian_name.title()}!")
+    print(f"Welcome to the Hogwarts Library, {librarian_name.title()}!")
     print()
     while True:
         answer = input('Would you like to see the options available to you? [y] = continue [n] = quit: ')
@@ -195,7 +195,3 @@ def run_student_id_loaned_books():
 
 if __name__ == '__main__':
     welcome_to_library()
-    # run_student_id_loaned_books()
-    # run_get_all_books()
-    # run_view_all_students()
-
