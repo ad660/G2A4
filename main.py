@@ -1,61 +1,6 @@
 import requests
 
 
-def get_all_books():
-    try:
-        url = 'http://127.0.0.1:5000/books'
-        result = requests.get(url)
-        if result.status_code == 200:
-            data = result.json()
-            if isinstance(data, dict):
-                for key, value in data.items():
-                    print(f"{key}: {value}")
-            else:
-                raise Exception("Invalid data format: Data should be a dictionary.")
-        else:
-            raise Exception(f'Request failed with status code: {result.status_code}')
-    except Exception as e:
-        print(f'Error occurred: {e}')
-
-
-def get_student_id_loaned_books(student_id):
-    try:
-        url = f'http://127.0.0.1:5000/books_on_loan/{student_id}'
-        result = requests.get(url)
-        if result.status_code == 200:
-            data = result.json()
-            return data
-        else:
-            raise Exception(f'Request failed with status code: {result.status_code}')
-    except Exception as e:
-        print(f'Error occurred: {e}')
-        return None
-
-
-def display_loaned_books(result):
-    for item in result:
-        print("{} {} {} {} {}".format(
-            'Student ID: ' + str(item['studentID']),
-            '\nTitle: ' + str(item['title']),
-            '\nAuthor: ' + str(item['author']),
-            '\nChecked Out Date: ' + str(item['check out']),
-            '\nReturn By Date: ' + str(item['return by'])
-        ))
-
-
-def run_student_id_loaned_books():
-    student_id = input('You would like to check the loaned books of a student? What is their Student ID:  ')
-    loaned_books = get_student_id_loaned_books(int(student_id))
-    display_loaned_books(loaned_books)
-# -- END: GET LOANED BOOKS BY STUDENT ID --
-
-
-# def librarian_adds_a_book():
-#     print('Please enter what books you\'d like to add to the library')
-#     enterBook = input('Please enter the title, author, year published, subject, description')
-#     add_new_book(enterBook)
-
-
 def welcome_to_library():
     print('''
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -116,6 +61,24 @@ def student_chooses_option():
         student_chooses_option()
 
 
+def get_all_books():
+    try:
+        url = 'http://127.0.0.1:5000/books'
+        result = requests.get(url)
+        if result.status_code == 200:
+            data = result.json()
+            if isinstance(data, dict):
+                for key, value in data.items():
+                    print(f"{key}: {value}")
+            else:
+                raise Exception("Invalid data format: Data should be a dictionary.")
+        else:
+            raise Exception(f'Request failed with status code: {result.status_code}')
+    except Exception as e:
+        print(f'Error occurred: {e}')
+
+
+
 def display_student(students):
     student_data = students['Students']
     for item in student_data:
@@ -147,6 +110,43 @@ def run_view_all_students():
     # except Exception as e:
     #     print(f'Error occurred: {e}')
     #     return None
+
+
+def get_student_id_loaned_books(student_id):
+    try:
+        url = f'http://127.0.0.1:5000/books_on_loan/{student_id}'
+        result = requests.get(url)
+        if result.status_code == 200:
+            data = result.json()
+            return data
+        else:
+            raise Exception(f'Request failed with status code: {result.status_code}')
+    except Exception as e:
+        print(f'Error occurred: {e}')
+        return None
+
+
+def display_loaned_books(result):
+    for item in result:
+        print("{} {} {} {} {}".format(
+            'Student ID: ' + str(item['studentID']),
+            '\nTitle: ' + str(item['title']),
+            '\nAuthor: ' + str(item['author']),
+            '\nChecked Out Date: ' + str(item['check out']),
+            '\nReturn By Date: ' + str(item['return by'])
+        ))
+
+
+def run_student_id_loaned_books():
+    student_id = input('You would like to check the loaned books of a student? What is their Student ID:  ')
+    loaned_books = get_student_id_loaned_books(int(student_id))
+    display_loaned_books(loaned_books)
+
+
+# def librarian_adds_a_book():
+#     print('Please enter what books you\'d like to add to the library')
+#     enterBook = input('Please enter the title, author, year published, subject, description')
+#     add_new_book(enterBook)
 
 
 if __name__ == '__main__':
