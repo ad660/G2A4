@@ -49,20 +49,16 @@ def welcome_to_library():
 def librarian_chooses_option():
     print("If you would like to see all the books available please now select option 1: ")
     select_option = int(input("Please choose your option now: "))
-
     if select_option == 1:
         print("You have chosen to see all books available")
         return get_all_books()
-    elif:
+    elif select_option == 2:
         print('There are multiple students with books on loan, their student ID\'s are: 6, 10, 12')
         student_id = int(input("To check out what books a student currently have on loan please "
                                "enter the number of their student ID : "))
         run_student_id_loaned_books(student_id)
     elif select_option is None or isinstance(select_option, (int, float)):
         print("Invalid option please enter option again ")
-        student_chooses_option()
-
-
 
 
 def get_all_books():
@@ -115,6 +111,20 @@ def run_view_all_students():
     #     print(f'Error occurred: {e}')
     #     return None
 
+def display_loaned_books(result):
+    # for key, values in result.items():
+    for value in result:
+        print('-' * 30)
+        print("{} {} {} {} {}".format(
+            'Student ID: ' + str(value['studentID']),
+            '\nTitle: ' + str(value['title']),
+            '\nAuthor: ' + str(value['author']),
+            '\nChecked Out Date: ' + str(value['check out']),
+            '\nReturn By Date: ' + str(value['return by'])
+            )
+        )
+        print('-' * 30)
+        
 
 def get_student_id_loaned_books(student_id):
     try:
@@ -128,17 +138,6 @@ def get_student_id_loaned_books(student_id):
     except Exception as e:
         print(f'Error occurred: {e}')
         return None
-
-
-def display_loaned_books(result):
-    for item in result:
-        print("{} {} {} {} {}".format(
-            'Student ID: ' + str(item['studentID']),
-            '\nTitle: ' + str(item['title']),
-            '\nAuthor: ' + str(item['author']),
-            '\nChecked Out Date: ' + str(item['check out']),
-            '\nReturn By Date: ' + str(item['return by'])
-        ))
 
 
 def run_student_id_loaned_books():
