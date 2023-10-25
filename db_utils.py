@@ -44,7 +44,6 @@ def get_all_students():
         cur.execute(query)
         students = cur.fetchall()
         hogwarts_students = _map_students_values(students)
-        print(hogwarts_students)
         cur.close()
 
 
@@ -58,7 +57,25 @@ def get_all_students():
 
     return hogwarts_students
 
-# GET BOOKS ON LOAN BY STUDENT ID
+
+def _map_all_book_values(all_books):
+    mapped = []
+    for item in all_books:
+        mapped.append(
+            {
+                'bookID': item[0],
+                'title': item[1],
+                'author': item[2],
+                'year_published': item[3],
+                'subject': item[4],
+                'description': item[5],
+                'age_restrict': item[6],
+                'stockID': item[7]
+            }
+        )
+    return mapped
+
+
 def get_all_books():
     try:
         db_name = 'hogwartslibrary'
@@ -72,11 +89,7 @@ def get_all_books():
 
         cur.execute(query)
         results = cur.fetchall()
-        books_in_library = []
-        for item in results:
-            books_in_library.append({'title': item[1], 'author': item[2],
-                                     'year_published': item[3], 'subject': item[4],
-                                     'description': item[5], 'age_restrict': item[6], 'stockID': item[7]})
+        books_in_library = _map_all_book_values(results)
         print(books_in_library)
         cur.close()
 
@@ -86,7 +99,7 @@ def get_all_books():
     finally:
         if db_connection:
             db_connection.close()
-            print('Connection closed')
+            print('Connection closed: get all books')
 
     return books_in_library
 
