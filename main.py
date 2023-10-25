@@ -78,7 +78,7 @@ def display_all_books(result):
             print('-' * 50)
 
 
-def get_all_books():
+def run_get_all_books():
     try:
         url = 'http://127.0.0.1:5000/books'
         result = requests.get(url)
@@ -114,7 +114,6 @@ def run_view_all_students():
         result = requests.get(url)
         if result.status_code == 200:
             data = result.json()
-            print("Displaying Students data: ")
             return display_all_students(data)
         else:
             raise Exception(f'Request failed with status code: {result.status_code}')
