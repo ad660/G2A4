@@ -1,6 +1,6 @@
 blinker==1.6.3
 click==8.1.7
-Flask==3.0.0
+flask==3.0.0
 itsdangerous==2.1.2
 Jinja2==3.1.2
 jsonify==0.5
@@ -19,3 +19,7 @@ Werkzeug==3.0.0
 # Use compatible operating systems such as MAC, Linux and Windows.
 # The user of Git should also have a good comprehension of command lines interface and how to implement the command in their terminal or, at least how to search the internet for the correct command lines to then use in their terminal.
 # The user will also need to have a repository hosting system such as GitHub or GitLab. 
+
+requests~=2.31.0
+mysql~=0.0.3
+mysql-connector-python~=8.1.0
