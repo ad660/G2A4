@@ -47,6 +47,7 @@ def welcome_to_library():
 
 
 def librarian_chooses_option():
+    view_librarian_options()
     select_option = input("Please choose your option now: ")
     if select_option == str(1):
         print("You have chosen to see all books available.")
@@ -63,6 +64,15 @@ def librarian_chooses_option():
         print()
         print('There seems to have been an error please select again.')
         print()
+
+
+def view_librarian_options():
+    print('There are a variety of options available for you to choose from:')
+    print("Select option 1 to see all the books available. [1]")
+    print("Select option 2 to see all students. [2]")
+    print("Select option 3 to see a students loaned books by Student ID. [3]")
+    print("Select option 4 to add a new student. [4]")
+    print()
 
 
 def display_all_books(result):
