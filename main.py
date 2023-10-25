@@ -92,37 +92,35 @@ def get_all_books():
 
 
 
-def display_student(students):
-    student_data = students['Students']
-    for item in student_data:
-        print(
-            "---------------------------"
 
-            '\nStudent ID: ' + str(item['studentID']),
-            '\nfirst_name: ' + item['first_name'],
-            '\nlast_name: ' + item['last_name'],
-            '\nhouse ' + item['house'],
-            '\nemail: ' + item['email'],
-            '\njoin date ' + item['join_date'],
-
-            "\n---------------------------"
-        )
+def display_all_students(result):
+    for key, values in result.items():
+        for value in values:
+            print("{} {} {}".format(
+                'Student ID: ' + str(value['studentID']),
+                '\nFirst Name: ' + str(value['first_name']),
+                '\nLast Name: ' + str(value['last_name']),
+                # '\nhouse ' + str(item['house']),
+                # '\nemail: ' + str(item['email']),
+                # '\njoin date ' + str(item['join_date']),
+                )
+            )
+            print('-' * 30)
 
 
 def run_view_all_students():
-    # try:
-    url = f'http://127.0.0.1:5000/students'
-    result = requests.get(url)
-    if result.status_code == 200:
-        data = result.json()
-        print("Displaying Students data: ")
-        display_student(data)
-        return data
-    else:
-        raise Exception(f'Request failed with status code: {result.status_code}')
-    # except Exception as e:
-    #     print(f'Error occurred: {e}')
-    #     return None
+    try:
+        url = f'http://127.0.0.1:5000/students'
+        result = requests.get(url)
+        if result.status_code == 200:
+            data = result.json()
+            print("Displaying Students data: ")
+            return display_all_students(data)
+        else:
+            raise Exception(f'Request failed with status code: {result.status_code}')
+    except Exception as e:
+        print(f'Error occurred: {e}')
+        return None
 
 
 def display_loaned_books(result):
@@ -169,5 +167,6 @@ def run_student_id_loaned_books():
 if __name__ == '__main__':
     # welcome_to_library()
     # run_student_id_loaned_books()
-    get_all_books()
+    # get_all_books()
+    run_view_all_students()
 
