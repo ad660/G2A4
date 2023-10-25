@@ -104,7 +104,6 @@ def get_all_books():
     return books_in_library
 
 
-# GET BOOKS ON LOAN BY STUDENT ID
 def _map_values(student_loaned_books):
     mapped = []
     for item in student_loaned_books:
@@ -147,7 +146,7 @@ def get_books_by_student_id(student_id):
     finally:
         if db_connection:
             db_connection.close()
-            print('Connection closed')
+            print('Connection closed: get loaned books/studentID')
 
     return student_books_on_loan
 
