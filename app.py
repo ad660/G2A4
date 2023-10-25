@@ -5,6 +5,7 @@ from db_utils import (get_all_students, get_all_books, get_books_by_student_id,
 app = Flask(__name__)
 app.json.sort_keys = False
 
+
 @app.route('/books', methods=['GET'])
 def get_book():
     data = {"Books": get_all_books()}
@@ -47,7 +48,8 @@ def add_book():
 #    In the newly created request, select "POST" as the method from the dropdown menu next to the URL bar.
 
 # 4. Enter the URL:
-#    In the URL bar, enter the full address of your Flask application. In your case, it will be http://localhost:5000/add_book.
+#    In the URL bar, enter the full address of your Flask application.
+#    In your case, it will be http://localhost:5000/add_book.
 
 # 5. Add Content-Type Header:
 #    In the headers section, add the Content-Type header and set its value to application/json.
@@ -68,10 +70,12 @@ def add_book():
 #    ```
 
 # 7. Send the Request:
-#    Click the 'Send' button (or use the shortcut Ctrl + Enter or Cmd + Enter on Mac) to send the POST request to your Flask application.
+#    Click the 'Send' button (or use the shortcut Ctrl + Enter or Cmd + Enter on Mac)
+#    to send the POST request to your Flask application.
 
 # 8. Read the Response:
-#    Insomnia should display the response from your application. If everything is fine, you should see the message "Book added successfully".
+#    Insomnia should display the response from your application. If everything is fine,
+#    you should see the message "Book added successfully".
 
 # Note: Make sure your Flask application is running (e.g., `python app.py`) while testing with Insomnia.
 #       Additionally, ensure that your Flask routes are correctly defined in `app.py`.
