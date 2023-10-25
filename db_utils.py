@@ -227,7 +227,7 @@ def delete_graduated_students ():
     return (student_list)
 
 
-def main():
+def run_db_utils():
     get_all_students()
     get_all_books()
     get_books_by_student_id(10)
@@ -235,4 +235,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    run_db_utils()
