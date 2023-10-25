@@ -51,6 +51,10 @@ def welcome_to_library():
             print()
             print('Thank you using our service. Keep making magic! Goodbye for now!')
             break
+        else:
+            print()
+            print('There seems to have been an error please restart the programme.')
+            break
 
 
 def librarian_chooses_option():
