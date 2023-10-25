@@ -234,7 +234,7 @@ def main():
     get_all_students()
     get_all_books()
     get_books_by_student_id(10)
-    add_student("K", "O", "1998-07-12", "Slytherin", "KO@example.com", "2023-10-24")
+    # add_student("K", "O", "1998-07-12", "Slytherin", "KO@example.com", "2023-10-24")
 
 
 if __name__ == '__main__':
