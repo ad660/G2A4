@@ -61,17 +61,35 @@ def librarian_chooses_option():
         print("Invalid option please enter option again ")
 
 
+def display_all_books(result):
+    for key, values in result.items():
+        for value in values:
+            print("{} {} {} {} {} {} {} {}".format(
+                'Book ID: ' + str(value['bookID']),
+                '\nTitle: ' + str(value['title']),
+                '\nAuthor: ' + str(value['author']),
+                '\nyear_published: ' + str(value['year_published']),
+                '\nsubject: ' + str(value['subject']),
+                '\ndescription: ' + str(value['description']),
+                '\nage_restrict: ' + str(value['age_restrict']),
+                '\nstockID: ' + str(value['stockID'])
+                )
+            )
+            print('-' * 50)
+
+
 def get_all_books():
     try:
         url = 'http://127.0.0.1:5000/books'
         result = requests.get(url)
         if result.status_code == 200:
             data = result.json()
-            if isinstance(data, dict):
-                for key, value in data.items():
-                    print(f"{key}: {value}")
-            else:
-                raise Exception("Invalid data format: Data should be a dictionary.")
+            return display_all_books(data)
+            # if isinstance(data, dict):
+            #     for key, value in data.items():
+            #         print(f"{key}: {value}")
+            # else:
+            #     raise Exception("Invalid data format: Data should be a dictionary.")
         else:
             raise Exception(f'Request failed with status code: {result.status_code}')
     except Exception as e:
@@ -155,4 +173,6 @@ def run_student_id_loaned_books():
 
 if __name__ == '__main__':
     # welcome_to_library()
-    run_student_id_loaned_books()
+    # run_student_id_loaned_books()
+    get_all_books()
+
