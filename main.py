@@ -41,24 +41,28 @@ def welcome_to_library():
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠚⠛⠂⠀⠀⠀⠀⠀⢿⡦⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀''')
 
     librarian_name = input("Warm welcome back Hogwartian Librarian! Please sign in with your name: ")
-    print(f"Welcome to the Hogwarts Library {librarian_name}!")
-    print('There are multiple students with books on loan, their student ID\'s are: 6, 10, 12')
-    student_id = int(input("To check out what books a student currently have on loan please "
-                           "enter the number of their student ID : "))
-    run_student_id_loaned_books(student_id)
-    student_chooses_option()
+    print(f"Welcome to the Hogwarts Library {librarian_name.title()}!")
+    print()
+    librarian_chooses_option()
 
 
-def student_chooses_option():
+def librarian_chooses_option():
     print("If you would like to see all the books available please now select option 1: ")
     select_option = int(input("Please choose your option now: "))
 
     if select_option == 1:
         print("You have chosen to see all books available")
         return get_all_books()
+    elif:
+        print('There are multiple students with books on loan, their student ID\'s are: 6, 10, 12')
+        student_id = int(input("To check out what books a student currently have on loan please "
+                               "enter the number of their student ID : "))
+        run_student_id_loaned_books(student_id)
     elif select_option is None or isinstance(select_option, (int, float)):
         print("Invalid option please enter option again ")
         student_chooses_option()
+
+
 
 
 def get_all_books():
