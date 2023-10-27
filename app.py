@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from db_utils import (get_all_students, get_all_books, add_new_book, get_students_ids, get_books_by_student_id, add_student)
+from db_utils import (get_all_students, get_all_books, add_new_book, get_students_ids, get_books_by_student_id, add_new_student)
 
 app = Flask(__name__)
 app.json.sort_keys = False
@@ -35,27 +35,25 @@ def add_new_book_to_db():
     subject = data.get('_subject')
     description = data.get('_description')
     age_restrict = data.get('age_restrict')
-    stockID = data.get('stockID')
 
-    add_new_book(title, author, year_published, subject, description, age_restrict, stockID)
+    add_new_book(title, author, year_published, subject, description, age_restrict)
 
     return jsonify({"message": "Book added successfully"}), 200
 
 
-@app.route('/add_student', methods=['PUT'])
+@app.route('/add_new_student', methods=['PUT'])
 def update_student():
-    if request.method == 'PUT':
-        data = request.get_json()
-        first_name = data.get('first_name')
-        last_name = data.get('last_name')
-        birth_date = data.get('birth_date')
-        house = data.get('house')
-        email = data.get('email')
-        join_date = data.get('join_date')
+    data = request.get_json()
+    first_name = data.get('first_name')
+    last_name = data.get('last_name')
+    birth_date = data.get('birth_date')
+    house = data.get('house')
+    email = data.get('email')
+    join_date = data.get('join_date')
 
-        add_student(first_name, last_name, birth_date, house, email, join_date)
+    add_new_student(first_name, last_name, birth_date, house, email, join_date)
 
-        return jsonify({"message": "Student added successfully"}), 200
+    return jsonify({"message": "Student added successfully"}), 200
 
 
 @app.route('/students', methods=['GET'])

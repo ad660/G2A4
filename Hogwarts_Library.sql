@@ -2,13 +2,6 @@ DROP DATABASE IF EXISTS hogwartslibrary;
 CREATE DATABASE hogwartslibrary;
 USE hogwartslibrary;
 
--- Create a table to track book stock levels
-CREATE TABLE book_stock (
-    stockID INT AUTO_INCREMENT UNIQUE PRIMARY KEY,
-    stock_quantity INT NOT NULL,
-    stock_available INT DEFAULT 0
-);
-
 -- Create a table to store information about books
 CREATE TABLE books (
     bookID INT AUTO_INCREMENT UNIQUE PRIMARY KEY,
@@ -17,15 +10,21 @@ CREATE TABLE books (
     year_published INT,
     _subject VARCHAR(50),
     _description VARCHAR(500),
-    age_restrict INT,
-    stockID INT NOT NULL,
-    FOREIGN KEY (stockID) REFERENCES book_stock(stockID)
+    age_restrict INT
+);
+
+-- Create a table to track book stock levels
+CREATE TABLE book_stock (
+    stockID INT AUTO_INCREMENT UNIQUE PRIMARY KEY,
+    stock_quantity INT NOT NULL,
+    stock_available INT DEFAULT 0,
+    bookID INT,
+    FOREIGN KEY (bookID) REFERENCES books(bookID)
 );
 
 -- Create a table to store information about students
 CREATE TABLE students (
     studentID INT AUTO_INCREMENT UNIQUE PRIMARY KEY,
-
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     birthDate DATE NOT NULL,
@@ -45,36 +44,34 @@ CREATE TABLE loaned_books (
     FOREIGN KEY (studentID) REFERENCES students(studentID)
 );
 
-
-INSERT INTO book_stock (stock_quantity, stock_available)
+INSERT INTO books (title, author, year_published, _subject, _description, age_restrict)
 VALUES
-    (3, 2),
-    (6, 4),
-    (3, 0),
-    (1, 1),
-    (5, 3),
-    (3, 2),
-    (2, 1),
-    (20, 11),
-    (2, 0),
-    (1, 1);
-    
+    ('Fantastic Beasts and Where to Find Them', 'Newt Scamander', 2001, 'Magizoology', 'A guide to magical creatures', 11),
+    ('The Standard Book of Spells', 'Miranda Goshawk', 1990, 'Spellbook', 'A basic guide to spellcasting', 11),
+    ('Quidditch Through the Ages', 'Kennilworthy Whisp', 1999, 'Sports', 'The history of Quidditch', 5),
+    ('The Dark Forces: A Guide to Self-Protection', 'Quentin Trimble', 1980, 'Defense Against the Dark Arts', 'Defending against dark magic', 16),
+    ('Hogwarts: A History', 'Bathilda Bagshot', 2005, 'History', 'The history of Hogwarts', 11),
+    ('Magical Drafts and Potions', 'Arsenius Jigger', 2002, 'Potions', 'A guide to potion-making', 11),
+    ('A History of Magic', 'Bathilda Bagshot', 1899, 'History', 'The history of wizardry', 11),
+    ('Standard Book of Spells, Grade 3', 'Miranda Goshawk', 2000, 'Spellbook', 'An Intermediate\'s spellbook', 14),
+    ('The Tales of Beedle the Bard', 'Beedle the Bard', 1640, 'Fairy Tales', 'Wizarding fairy tales', 3),
+    ('Quintessence: A Quest', 'Unknown', 2002, 'Magical Philosophy', 'A philosophical exploration', 11);
 
 
-INSERT INTO books (title, author, year_published, _subject, _description, age_restrict, stockID)
+INSERT INTO book_stock (stock_quantity, stock_available, bookID)
 VALUES
-    ('Fantastic Beasts and Where to Find Them', 'Newt Scamander', 2001, 'Magizoology', 'A guide to magical creatures', 11, 1),
-    ('The Standard Book of Spells', 'Miranda Goshawk', 1990, 'Spellbook', 'A basic guide to spellcasting', 11, 2),
-    ('Quidditch Through the Ages', 'Kennilworthy Whisp', 1999, 'Sports', 'The history of Quidditch', 5, 3),
-    ('The Dark Forces: A Guide to Self-Protection', 'Quentin Trimble', 1980, 'Defense Against the Dark Arts', 'Defending against dark magic', 16, 4),
-    ('Hogwarts: A History', 'Bathilda Bagshot', 2005, 'History', 'The history of Hogwarts', 11, 5),
-    ('Magical Drafts and Potions', 'Arsenius Jigger', 2002, 'Potions', 'A guide to potion-making', 11, 6),
-    ('A History of Magic', 'Bathilda Bagshot', 1899, 'History', 'The history of wizardry', 11, 7),
-    ('Standard Book of Spells, Grade 3', 'Miranda Goshawk', 2000, 'Spellbook', 'An Intermediate\'s spellbook', 14, 8),
-    ('The Tales of Beedle the Bard', 'Beedle the Bard', 1640, 'Fairy Tales', 'Wizarding fairy tales', 3, 9),
-    ('Quintessence: A Quest', 'Unknown', 2002, 'Magical Philosophy', 'A philosophical exploration', 11, 10);
-
+    (3, 2, 1),
+    (6, 4, 2),
+    (3, 0, 3),
+    (1, 1, 4),
+    (5, 3, 5),
+    (3, 2, 6),
+    (2, 1, 7),
+    (20, 11, 8),
+    (2, 0, 9),
+    (1, 1, 10);
      
+
     INSERT INTO students (first_name, last_name, birthDate, house, email, join_date)
 VALUES
     ('Harry', 'Potter', '1980-07-01', 'Gryffindor', 'harry@example.com', '1991-09-01'),
