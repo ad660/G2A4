@@ -26,8 +26,8 @@ def add_new_book_to_db():
     title = data.get('title')
     author = data.get('author')
     year_published = data.get('year_published')
-    subject = data.get('subject')
-    description = data.get('description')
+    subject = data.get('_subject')
+    description = data.get('_description')
     age_restrict = data.get('age_restrict')
     stockID = data.get('stockID')
 
