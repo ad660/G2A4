@@ -65,18 +65,23 @@ def librarian_chooses_option():
     select_option = input("Please choose your option now: ")
     if select_option == str(1):
         print("You have chosen to see all books available.")
+        print('-' * 50)
         return run_get_all_books()
     elif select_option == str(2):
         print("You have chosen to see all students.")
+        print('-' * 50)
         return run_view_all_students()
     elif select_option == str(3):
         print("You have chosen to see loaned books by student ID.")
+        print('-' * 50)
         return run_student_id_loaned_books()
     elif select_option == str(4):
         print("You have chosen to add a new student's information to the database.")
+        print('-' * 50)
         return  # librarian_adds_a_student()
     elif select_option == str(5):
         print("You have chosen to add a new book to the database.")
+        print('-' * 50)
         title = input("Enter the title of the book: ")
         author = input("Enter the author of the book: ")
         year_published = int(input("Enter the year of publication: "))
@@ -217,6 +222,7 @@ def run_student_id_loaned_books():
     print('There are currently multiple students with books on loan, their student ID\'s are:')
     get_student_ids_in_loaned_books()
     student_id = input('To view what books a student currently has on loan please enter their student ID number: ')
+    print('-' * 50)
     return get_student_id_loaned_books(student_id)
 
 
