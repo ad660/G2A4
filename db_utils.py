@@ -68,8 +68,7 @@ def _map_all_book_values(all_books):
                 'year_published': item[3],
                 'subject': item[4],
                 'description': item[5],
-                'age_restrict': item[6],
-                'stockID': item[7]
+                'age_restrict': item[6]
             }
         )
     return mapped
@@ -189,7 +188,7 @@ def get_books_by_student_id(student_id):
     return student_books_on_loan
 
 
-def add_new_book(title, author, year_published, subject, description, age_restrict, stockID):
+def add_new_book(title, author, year_published, subject, description, age_restrict):
     try:
         db_name = 'hogwartslibrary'
         db_connection = _connect_to_db(db_name)
@@ -197,10 +196,20 @@ def add_new_book(title, author, year_published, subject, description, age_restri
         print(f'Connected to database: {db_name}')
 
         query = """
-                INSERT INTO books (title, author, year_published, _subject, _description, age_restrict, stockID)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO books (title, author, year_published, _subject, _description, age_restrict)
+                VALUES (%s, %s, %s, %s, %s, %s)
                 """
-        cur.execute(query, (title, author, year_published, subject, description, age_restrict, stockID))
+        cur.execute(query, (title, author, year_published, subject, description, age_restrict))
+
+        cur.execute("SELECT LAST_INSERT_ID()")
+        bookID = cur.fetchone()[0]
+
+        stock_quantity = 1
+        cur.execute("""
+                    INSERT INTO book_stock (stock_quantity, stock_available, bookID)
+                    VALUES (%s, %s, %s)
+                    """, (stock_quantity, 1, bookID))
+
         db_connection.commit()
     except Exception as exc:
         print(f'Failed to add book. Error: {exc}')
@@ -211,7 +220,7 @@ def add_new_book(title, author, year_published, subject, description, age_restri
             print('Connection closed: add new book')
 
 
-def add_student(first_name, last_name, birthDate, house, email, join_date):
+def add_new_student(first_name, last_name, birthDate, house, email, join_date):
     try:
         db_name = 'hogwartslibrary'
         db_connection = _connect_to_db(db_name)
