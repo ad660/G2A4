@@ -102,6 +102,46 @@ def get_all_books():
     return books_in_library
 
 
+def _map_studentids(result):
+    mapped = []
+    for item in result:
+        mapped.append(
+            {
+                'studentID': item[0]
+            }
+        )
+    return mapped
+
+
+def get_students_ids():
+    try:
+        db_name = 'hogwartslibrary'
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+        print(f'Connected to database: {db_name}')
+
+        query = """ 
+        SELECT s.studentID
+        FROM students s
+        JOIN loaned_books lb ON lb.studentID = s.studentID
+        """
+
+        cur.execute(query)
+        student_ids = cur.fetchall()
+        mapped_student_ids = _map_studentids(student_ids)
+        cur.close()
+
+    except Exception as exc:
+        print(exc)
+
+    finally:
+        if db_connection:
+            db_connection.close()
+            print('Connection closed: get students IDs')
+
+    return mapped_student_ids
+
+
 def _map_values(student_loaned_books):
     mapped = []
     for item in student_loaned_books:
@@ -223,9 +263,10 @@ def add_student(first_name, last_name, birthDate, house, email, join_date):
 
 
 def run_db_utils():
-    print(get_all_students())
+    get_all_students()
     get_all_books()
-    get_books_by_student_id(10)
+    get_students_ids()
+    get_books_by_student_id(6)
 
 
 

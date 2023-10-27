@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from db_utils import (get_all_students, get_all_books, add_new_book, get_books_by_student_id, add_student)
+from db_utils import (get_all_students, get_all_books, add_new_book, get_students_ids, get_books_by_student_id, add_student)
 
 app = Flask(__name__)
 app.json.sort_keys = False
@@ -11,14 +11,20 @@ def get_book():
     return jsonify(data), 200
 
 
+@app.route('/studentids')
+def get_student_ids_in_loaned_books():
+    student_ids = get_students_ids()
+    return jsonify(student_ids), 200
+# http://127.0.0.1:5000/studentids
+
+
 @app.route('/books_on_loan/<student_id>')
 def get_loan_books_for_student(student_id):
     student_loaned_books = get_books_by_student_id(student_id)
     app.json.sort_keys = False
     return jsonify(student_loaned_books), 200
-
-
 # e.g. http://127.0.0.1:5001/books_on_loan/10
+
 
 @app.route('/add_new_book', methods=['POST'])
 def add_new_book_to_db():
