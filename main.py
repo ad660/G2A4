@@ -45,10 +45,10 @@ def welcome_to_library():
     print(f"Welcome to the Hogwarts Library, {librarian_name.title()}!")
     print()
     while True:
-        answer = input('Would you like to see the options available to you? [y] = continue [n] = quit: ')
-        if answer.lower() == 'y':
+        answer = input('Would you like to see the options available to you? [y] = continue [n] = quit: ').lower()
+        if answer == 'y':
             librarian_chooses_option()
-        elif answer.lower() == 'n':
+        elif answer == 'n':
             print()
             print('Thank you using our service. Keep making magic! Goodbye for now!')
             break
@@ -88,7 +88,7 @@ def librarian_chooses_option():
         print("Invalid option please enter option again ")
     else:
         print()
-        print('There seems to have been an error please select again.')
+        print('There seems to have been an error please restart the programme.')
         print()
 
 
@@ -135,13 +135,14 @@ def run_get_all_books():
 def display_all_students(result):
     for key, values in result.items():
         for value in values:
-            print("{} {} {}".format(
+            print("{} {} {} {} {} {}".format(
                 'Student ID: ' + str(value['studentID']),
                 '\nFirst Name: ' + str(value['first_name']),
                 '\nLast Name: ' + str(value['last_name']),
-                # '\nhouse ' + str(item['house']),
-                # '\nemail: ' + str(item['email']),
-                # '\njoin date ' + str(item['join_date']),
+                '\nBirth Year: ' + str(value['birthDate']),
+                '\nHogwarts House: ' + str(value['house']),
+                '\nEmail: ' + str(value['email']),
+                # '\njoin date ' + str(value['join_date']),
             )
             )
             print('-' * 30)
