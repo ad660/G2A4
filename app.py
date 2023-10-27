@@ -23,7 +23,7 @@ def get_loan_books_for_student(student_id):
     student_loaned_books = get_books_by_student_id(student_id)
     app.json.sort_keys = False
     return jsonify(student_loaned_books), 200
-# e.g. http://127.0.0.1:5001/books_on_loan/10
+# e.g. http://127.0.0.1:5000/books_on_loan/10
 
 
 @app.route('/add_new_book', methods=['POST'])
@@ -48,17 +48,15 @@ def update_student():
     last_name = data.get('last_name')
     birth_date = data.get('birth_date')
     house = data.get('house')
-    email = data.get('email')
     join_date = data.get('join_date')
 
-    add_new_student(first_name, last_name, birth_date, house, email, join_date)
+    add_new_student(first_name, last_name, birth_date, house, join_date)
 
     return jsonify({"message": "Student added successfully"}), 200
 
 
 @app.route('/students', methods=['GET'])
 def get_students():
-    # delete_graduated_students()
     students_data = {"Students": get_all_students()}
     return jsonify(students_data), 200
 

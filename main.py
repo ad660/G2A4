@@ -1,12 +1,10 @@
-# noinspection PyPackageRequirements
-import requests
-
 def colourCodes():
     colours = {
         'colourStart': "\033[",
         'colourEnd': "\033[0m",
     }
     return colours
+
 
 def welcome_to_library():
     colours = colourCodes()
@@ -90,19 +88,18 @@ def librarian_chooses_option():
         last_name = input("Enter the last name of the student: ")
         birthDate = input("Enter the birth date of the student (YYYY-MM-DD): ")
         house = input("Enter the house of the student: ")
-        email = input("Enter the email address of the student: ")
         join_date = input("Enter the join date of the student (YYYY-MM-DD): ")
 
-        return add_new_student(first_name, last_name, birthDate, house, email, join_date)
+        return add_new_student(first_name, last_name, birthDate, house, join_date)
     elif select_option == str(5):
         print("You have chosen to add a new book to the database.")
         print('-' * 50)
-        title = input("Enter the title of the book: ")
-        author = input("Enter the author of the book: ")
-        year_published = int(input("Enter the year of publication: "))
+        title = input("Enter the title of the book: ").title()
+        author = input("Enter the author of the book: ").title()
+        year_published = int(input("Enter the year of publication (YYYY): "))
         subject = input("Enter the subject of the book: ")
         description = input("Enter the description of the book: ")
-        age_restrict = int(input("Enter the age restriction: "))
+        age_restrict = int(input("Enter the age restriction (minimum age to checkout): "))
 
         return add_new_book(title, author, year_published, subject, description, age_restrict)
     elif select_option is None or isinstance(select_option, (int, float)):
@@ -126,15 +123,10 @@ def view_librarian_options():
     print()
 
 
-
-
-
-
-
 def display_all_books(result):
     for key, values in result.items():
         for value in values:
-            print("{} {} {} {} {} {} {} {}".format(
+            print("{} {} {} {} {} {} {}".format(
                 'Book ID: ' + str(value['bookID']),
                 '\nTitle: ' + str(value['title']),
                 '\nAuthor: ' + str(value['author']),
@@ -142,7 +134,7 @@ def display_all_books(result):
                 '\nsubject: ' + str(value['subject']),
                 '\ndescription: ' + str(value['description']),
                 '\nage_restrict: ' + str(value['age_restrict'])
-            )
+                )
             )
             print('-' * 50)
 
@@ -163,15 +155,15 @@ def run_get_all_books():
 def display_all_students(result):
     for key, values in result.items():
         for value in values:
-            print("{} {} {} {} {} {}".format(
+            print("{} {} {} {} {}".format(
                 'Student ID: ' + str(value['studentID']),
                 '\nFirst Name: ' + str(value['first_name']),
                 '\nLast Name: ' + str(value['last_name']),
                 '\nBirth Year: ' + str(value['birthDate']),
                 '\nHogwarts House: ' + str(value['house']),
-                '\nEmail: ' + str(value['email']),
-                # '\njoin date ' + str(value['join_date']),
-            )
+                # '\nEmail: ' + str(value['email']),
+                # '\nJoin date ' + str(value['join_date'])
+                )
             )
             print('-' * 30)
 
@@ -197,6 +189,7 @@ def display_student_ids(result):
         if val not in ids:
             ids.append(val)
     print(', '.join(ids))
+
 
 def get_student_ids_in_loaned_books():
     try:
@@ -270,13 +263,13 @@ def add_new_book(title, author, year_published, subject, description, age_restri
 
 import requests
 
-def add_new_student(first_name, last_name, birthDate, house, email, join_date):
+
+def add_new_student(first_name, last_name, birthDate, house, join_date):
     student_data = {
         "first_name": first_name,
         "last_name": last_name,
         "birthDate": birthDate,
         "house": house,
-        "email": email,
         "join_date": join_date
     }
 
@@ -291,6 +284,6 @@ def add_new_student(first_name, last_name, birthDate, house, email, join_date):
     else:
         print(f"Failed to add student. Error: {response.status_code}")
 
+
 if __name__ == '__main__':
     welcome_to_library()
-
