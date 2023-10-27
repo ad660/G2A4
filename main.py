@@ -1,5 +1,17 @@
+# noinspection PyPackageRequirements
+import requests
+
+def colourCodes():
+    colours = {
+        'colourStart': "\033[",
+        'colourEnd': "\033[0m",
+    }
+    return colours
+
 def welcome_to_library():
-    print('''
+    colours = colourCodes()
+
+    print( colours['colourStart'] + "33m" + ''' 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -35,7 +47,7 @@ def welcome_to_library():
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣀⣿⣿⣀⣼⣿⠉⢹⣇⠀⣿⡇⣿⡇⢀⣿⠀⢸⣿⠀⣿⠀⣿⡇⣾⡇⣿⡇⠀⣿⠀⠀⢸⣿⠀⠙⢷⣜⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⢸⣿⠀⠸⣿⠀⣿⠇⠛⠷⠋⣿⠀⠘⢿⡼⠻⣴⠋⠀⠸⠷⠿⠋⠀⠛⠀⠀⢸⣿⠀⢴⡆⢻⡦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⠀⢸⣿⠀⠀⠈⠉⠁⠀⣀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠿⠀⠀⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠚⠛⠂⠀⠀⠀⠀⠀⢿⡦⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀''')
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠚⠛⠂⠀⠀⠀⠀⠀⢿⡦⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀''' + colours['colourEnd'])
 
     librarian_name = input("Warm welcome back Hogwartian Librarian! Please sign in with your name: ")
     print(f"Welcome to the Hogwarts Library, {librarian_name.title()}!")
@@ -102,13 +114,21 @@ def librarian_chooses_option():
 
 
 def view_librarian_options():
-    print('There are a variety of options available for you to choose from:')
-    print("Select option 1 to see all the books available. [1]")
-    print("Select option 2 to see all students. [2]")
-    print("Select option 3 to see a students loaned books by Student ID. [3]")
-    print("Select option 4 to add a new student. [4]")
-    print("Select option 4 to add a new book. [5]")
+    colours = colourCodes()
+
+    print(colours['colourStart'] + "35m Welcome to the Magical Library of Hogwarts! Here, you’ll find an array of enchanting options at your disposal:" + colours['colourEnd'])
+    print(colours['colourStart'] + "34m 1. Cast the Summoning Charm [1] to unveil all Books of wizarding Wisdom." + colours['colourEnd'])
+    print(colours['colourStart'] + "33m 2. Unveil the Marauder’s Map [2] to reveal all the students of Hogwarts." + colours['colourEnd'])
+    print(colours['colourStart'] + "32m 3. Peer into the Pensieve [3] to inspect a student’s borrowed books, using their unique Wizarding ID." + colours['colourEnd'])
+    print(colours['colourStart'] + "31m 4. Enroll a New Student [4] into the hallowed halls of our esteemed institution." + colours['colourEnd'])
+    print(colours['colourStart'] + "36m 5. Conjure a New Book [5] to enrich our shelves with magical knowledge." + colours['colourEnd'])
+    print("Choose your path wisely, for the secrets of the wizarding world await your selection!")
     print()
+
+
+
+
+
 
 
 def display_all_books(result):
