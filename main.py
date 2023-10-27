@@ -1,3 +1,6 @@
+import requests
+
+
 def colourCodes():
     colours = {
         'colourStart': "\033[",
@@ -9,7 +12,7 @@ def colourCodes():
 def welcome_to_library():
     colours = colourCodes()
 
-    print( colours['colourStart'] + "33m" + ''' 
+    print(colours['colourStart'] + "33m" + ''' 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -260,8 +263,6 @@ def add_new_book(title, author, year_published, subject, description, age_restri
         print("Book added successfully!")
     else:
         print(f"Failed to add book. Error: {response.status_code}")
-
-import requests
 
 
 def add_new_student(first_name, last_name, birthDate, house, join_date):
