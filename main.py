@@ -135,12 +135,13 @@ def run_get_all_books():
 def display_all_students(result):
     for key, values in result.items():
         for value in values:
-            print("{} {} {} {}".format(
+            print("{} {} {} {} {} {}".format(
                 'Student ID: ' + str(value['studentID']),
                 '\nFirst Name: ' + str(value['first_name']),
                 '\nLast Name: ' + str(value['last_name']),
+                '\nBirth Year: ' + str(value['birthDate']),
                 '\nHogwarts House: ' + str(value['house']),
-                # '\nemail: ' + str(value['email']),
+                '\nEmail: ' + str(value['email']),
                 # '\njoin date ' + str(value['join_date']),
             )
             )

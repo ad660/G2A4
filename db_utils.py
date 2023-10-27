@@ -21,9 +21,9 @@ def _map_students_values(students_list):
                 'studentID': student[0],
                 'first_name': student[1],
                 'last_name': student[2],
-                # 'birthDate': student[3].strftime("%d-%m-%Y"),
+                'birthDate': student[3],
                 'house': student[4],
-                # 'email': student[5],
+                'email': student[5],
                 # 'join_date': student[6].strftime("%d-%m-%Y")
             }
         )
