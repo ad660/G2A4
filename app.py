@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from db_utils import (get_all_students, get_all_books, add_new_book, get_books_by_student_id, add_student, delete_graduated_students)
+from db_utils import (get_all_students, get_all_books, add_new_book, get_books_by_student_id, add_student)
 
 app = Flask(__name__)
 app.json.sort_keys = False
@@ -54,7 +54,7 @@ def update_student():
 
 @app.route('/students', methods=['GET'])
 def get_students():
-    delete_graduated_students()
+    # delete_graduated_students()
     students_data = {"Students": get_all_students()}
     return jsonify(students_data), 200
 

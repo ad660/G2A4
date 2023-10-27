@@ -193,33 +193,33 @@ def add_student(first_name, last_name, birthDate, house, email, join_date):
             print('Connection closed: add new student')
 
 
-def delete_graduated_students():
-    try:
-        db_name = 'hogwartslibrary'
-        db_connection = _connect_to_db(db_name)
-        cur = db_connection.cursor()
-        print(f'Connected to database: {db_name}')
-
-        query = """DELETE  s, lb FROM students s INNER JOIN loaned_books lb WHERE floor(datediff(now(),s.birthDate) / 
-        365.25)  >= 18;
-        SELECT * FROM students;
-        """
-
-        cur.execute(query)
-        students = cur.fetchall()
-        student_list = _map_students_values(students)
-        cur.close()
-
-        print(f'Students deleted successfully.')
-
-    except Exception as e:
-        print(f'Failed to add book. Error: {e}')
-
-    finally:
-        if db_connection:
-            db_connection.close()
-            print('Connection closed: delete grad student')
-    return (student_list)
+# def delete_graduated_students():
+#     try:
+#         db_name = 'hogwartslibrary'
+#         db_connection = _connect_to_db(db_name)
+#         cur = db_connection.cursor()
+#         print(f'Connected to database: {db_name}')
+#
+#         query = """DELETE  s, lb FROM students s INNER JOIN loaned_books lb WHERE floor(datediff(now(),s.birthDate) /
+#         365.25)  >= 18;
+#         SELECT * FROM students;
+#         """
+#
+#         cur.execute(query)
+#         students = cur.fetchall()
+#         student_list = _map_students_values(students)
+#         cur.close()
+#
+#         print(f'Students deleted successfully.')
+#
+#     except Exception as e:
+#         print(f'Failed to add book. Error: {e}')
+#
+#     finally:
+#         if db_connection:
+#             db_connection.close()
+#             print('Connection closed: delete grad student')
+#     return (student_list)
 
 
 def run_db_utils():
