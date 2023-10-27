@@ -88,7 +88,7 @@ def librarian_chooses_option():
         print("Invalid option please enter option again ")
     else:
         print()
-        print('There seems to have been an error please select again.')
+        print('There seems to have been an error please restart the programme.')
         print()
 
 
