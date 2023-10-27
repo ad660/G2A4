@@ -1,12 +1,12 @@
 # G2A4
 
 CFG Assignment 4
-Group 2 -
-Slogan: \* _The sky is not the limit_ \*
+Group 2: __THE CRAZY CAT LADY CODER__
+Slogan: _The sky is not the limit_
 
 # Welcome to our repository
 
-In our repositiory we will have the following for your convenience:
+In our repository we will have the following for your convenience:
 
 1. This readme file will have 6 different markdown text formatting features
 2. We will demonstrate a scenario of how to work as a team on github
