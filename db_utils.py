@@ -22,7 +22,7 @@ def _map_students_values(students_list):
                 'first_name': student[1],
                 'last_name': student[2],
                 # 'birthDate': student[3].strftime("%d-%m-%Y"),
-                # 'house': student[4],
+                'house': student[4],
                 # 'email': student[5],
                 # 'join_date': student[6].strftime("%d-%m-%Y")
             }
@@ -223,7 +223,7 @@ def add_student(first_name, last_name, birthDate, house, email, join_date):
 
 
 def run_db_utils():
-    get_all_students()
+    print(get_all_students())
     get_all_books()
     get_books_by_student_id(10)
 
