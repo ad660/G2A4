@@ -29,7 +29,6 @@ CREATE TABLE students (
     last_name VARCHAR(50) NOT NULL,
     birthDate DATE NOT NULL,
     house VARCHAR(20),
-    email VARCHAR(255) UNIQUE,
     join_date DATE NOT NULL
 );
 
@@ -72,32 +71,33 @@ VALUES
     (1, 1, 10);
      
 
-    INSERT INTO students (first_name, last_name, birthDate, house, email, join_date)
+    INSERT INTO students (first_name, last_name, birthDate, house, join_date)
 VALUES
-    ('Harry', 'Potter', '1980-07-01', 'Gryffindor', 'harry@example.com', '1991-09-01'),
-    ('Hermione', 'Granger', '1979-09-19', 'Gryffindor', 'hermione@example.com', '1991-09-01'),
-    ('Ron', 'Weasley', '1980-03-01', 'Gryffindor', 'ron@example.com', '1991-09-01'),
-    ('Draco', 'Malfoy', '1980-06-05', 'Slytherin', 'draco@example.com', '1991-09-01'),
-    ('Luna', 'Lovegood', '1981-02-13', 'Ravenclaw', 'luna@example.com', '1992-09-01'),
-    ('Cedric', 'Diggory', '1978-09-07', 'Hufflepuff', 'cedric@example.com', '1989-09-01'),
-    ('Ginny', 'Weasley', '1981-08-11', 'Gryffindor', 'ginny@example.com', '1992-09-01'),
-    ('Cho', 'Chang', '1979-04-07', 'Ravenclaw', 'cho@example.com', '1990-09-01'),
-    ('Neville', 'Longbottom', '1980-07-30', 'Gryffindor', 'neville@example.com', '1991-09-01'),
-    ('Pansy', 'Parkinson', '1980-08-01', 'Slytherin', 'pansy@example.com',  '1991-09-01'),
-    ('Fred', 'Weasley', '1978-04-01', 'Gryffindor', 'fred@example.com', '1989-09-01'),
-    ('George', 'Weasley', '1978-04-01', 'Gryffindor', 'george@example.com', '1989-09-01'),
-    ('Seamus', 'Finnigan', '1980-07-14', 'Gryffindor', 'seamus@example.com', '1990-09-01'),
-    ('Lavender', 'Brown', '1980-06-13', 'Gryffindor', 'lavender@example.com', '1991-09-01'),
-    ('Padma', 'Patil', '1980-04-19', 'Ravenclaw', 'padma@example.com', '1991-09-01'),
-    ('Parvati', 'Patil', '1980-02-05', 'Gryffindor', 'parvati@example.com', '1991-09-01'),
-    ('Blaise', 'Zabini', '1979-11-01', 'Slytherin', 'blaise@example.com', '1991-09-01'),
-    ('Justin', 'Finch-Fletchley', '1980-01-01', 'Hufflepuff', 'justin@example.com', '1990-09-03'),
-    ('Ernie', 'Macmillan', '1980-04-22', 'Hufflepuff', 'ernie@example.com', '1992-09-01'),
-    ('Susan', 'Bones', '1980-08-21', 'Hufflepuff', 'susan@example.com', '1991-09-01'),
-    ('Millicent', 'Bulstrode', '1980-09-05', 'Slytherin', 'millicent@example.com', '1991-09-01'),
-    ('Hannah', 'Abbott', '1980-04-12', 'Hufflepuff', 'hannah@example.com', '1992-09-01'),
-    ('Vincent', 'Crabbe', '1980-05-02', 'Slytherin', 'vincent@example.com', '1980-09-01'),
-    ('Gregory', 'Goyle', '1979-11-02', 'Slytherin', 'gregory@example.com', '1979-09-01'); 
+
+    ('Harry', 'Potter', '1980-07-01', 'Gryffindor', '1991-09-01'),
+    ('Hermione', 'Granger', '1979-09-19', 'Gryffindor', '1991-09-01'),
+    ('Ron', 'Weasley', '1980-03-01', 'Gryffindor','1991-09-01'),
+    ('Draco', 'Malfoy', '1980-06-05', 'Slytherin', '1991-09-01'),
+    ('Luna', 'Lovegood', '1981-02-13', 'Ravenclaw','1992-09-01'),
+    ('Cedric', 'Diggory', '1978-09-07', 'Hufflepuff', '1989-09-01'),
+    ('Ginny', 'Weasley', '1981-08-11', 'Gryffindor', '1992-09-01'),
+    ('Cho', 'Chang', '1979-04-07', 'Ravenclaw', '1990-09-01'),
+    ('Neville', 'Longbottom', '1980-07-30', 'Gryffindor', '1991-09-01'),
+    ('Pansy', 'Parkinson', '1980-08-01', 'Slytherin', '1991-09-01'),
+    ('Fred', 'Weasley', '1978-04-01', 'Gryffindor','1989-09-01'),
+    ('George', 'Weasley', '1978-04-01', 'Gryffindor', '1989-09-01'),
+    ('Seamus', 'Finnigan', '1980-07-14', 'Gryffindor', '1990-09-01'),
+    ('Lavender', 'Brown', '1980-06-13', 'Gryffindor', '1991-09-01'),
+    ('Padma', 'Patil', '1980-04-19', 'Ravenclaw', '1991-09-01'),
+    ('Parvati', 'Patil', '1980-02-05', 'Gryffindor', '1991-09-01'),
+    ('Blaise', 'Zabini', '1979-11-01', 'Slytherin',  '1991-09-01'),
+    ('Justin', 'Finch-Fletchley', '1980-01-01', 'Hufflepuff', '1990-09-03'),
+    ('Ernie', 'Macmillan', '1980-04-22', 'Hufflepuff', '1992-09-01'),
+    ('Susan', 'Bones', '1980-08-21', 'Hufflepuff', '1991-09-01'),
+    ('Millicent', 'Bulstrode', '1980-09-05', 'Slytherin',  '1991-09-01'),
+    ('Hannah', 'Abbott', '1980-04-12', 'Hufflepuff', '1992-09-01'),
+    ('Vincent', 'Crabbe', '1980-05-02', 'Slytherin', '1980-09-01'),
+    ('Gregory', 'Goyle', '1979-11-02', 'Slytherin', '1979-09-01');
     
 
 INSERT INTO loaned_books (bookID, studentID, checked_out_date, return_date)

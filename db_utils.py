@@ -21,9 +21,9 @@ def _map_students_values(students_list):
                 'studentID': student[0],
                 'first_name': student[1],
                 'last_name': student[2],
-                'birthDate': student[3],
+                'birthDate': student[3].strftime("%d-%m-%Y"),
                 'house': student[4],
-                'email': student[5],
+                # 'email': student[5],
                 # 'join_date': student[6].strftime("%d-%m-%Y")
             }
         )
@@ -220,7 +220,7 @@ def add_new_book(title, author, year_published, subject, description, age_restri
             print('Connection closed: add new book')
 
 
-def add_new_student(first_name, last_name, birthDate, house, email, join_date):
+def add_new_student(first_name, last_name, birthDate, house, join_date):
     try:
         db_name = 'hogwartslibrary'
         db_connection = _connect_to_db(db_name)
@@ -228,10 +228,10 @@ def add_new_student(first_name, last_name, birthDate, house, email, join_date):
         print(f'Connected to database: {db_name}')
 
         query = """
-                INSERT INTO students (first_name, last_name, birthDate, house, email, join_date)
+                INSERT INTO students (first_name, last_name, birthDate, house, join_date)
                 VALUES (%s, %s, %s, %s, %s, %s)
                 """
-        cur.execute(query, (first_name, last_name, birthDate, house, email, join_date))
+        cur.execute(query, (first_name, last_name, birthDate, house, join_date))
         db_connection.commit()
     except Exception as e:
         print(f'Failed to add student. Error: {e}')
@@ -242,41 +242,11 @@ def add_new_student(first_name, last_name, birthDate, house, email, join_date):
             print('Connection closed: add new student')
 
 
-# def delete_graduated_students():
-#     try:
-#         db_name = 'hogwartslibrary'
-#         db_connection = _connect_to_db(db_name)
-#         cur = db_connection.cursor()
-#         print(f'Connected to database: {db_name}')
-#
-#         query = """DELETE  s, lb FROM students s INNER JOIN loaned_books lb WHERE floor(datediff(now(),s.birthDate) /
-#         365.25)  >= 18;
-#         SELECT * FROM students;
-#         """
-#
-#         cur.execute(query)
-#         students = cur.fetchall()
-#         student_list = _map_students_values(students)
-#         cur.close()
-#
-#         print(f'Students deleted successfully.')
-#
-#     except Exception as e:
-#         print(f'Failed to add book. Error: {e}')
-#
-#     finally:
-#         if db_connection:
-#             db_connection.close()
-#             print('Connection closed: delete grad student')
-#     return (student_list)
-
-
 def run_db_utils():
     get_all_students()
     get_all_books()
     get_students_ids()
     get_books_by_student_id(6)
-
 
 
 if __name__ == '__main__':
