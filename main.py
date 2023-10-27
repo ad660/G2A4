@@ -45,7 +45,9 @@ def welcome_to_library():
     print(f"Welcome to the Hogwarts Library, {librarian_name.title()}!")
     print()
     while True:
+        print()
         answer = input('Would you like to see the options available to you? [y] = continue [n] = quit: ').lower()
+        print()
         if answer == 'y':
             librarian_chooses_option()
         elif answer == 'n':
@@ -162,10 +164,30 @@ def run_view_all_students():
         return None
 
 
-def display_loaned_books(result):
-    # for key, values in result.items():
+def display_student_ids(result):
+    ids = []
     for value in result:
-        print('-' * 30)
+        val = "{}".format(value['studentID'])
+        if val not in ids:
+            ids.append(val)
+    print(', '.join(ids))
+
+def get_student_ids_in_loaned_books():
+    try:
+        url = f'http://127.0.0.1:5000/studentids'
+        result = requests.get(url)
+        if result.status_code == 200:
+            data = result.json()
+            return display_student_ids(data)
+        else:
+            raise Exception(f'Request failed with status code: {result.status_code}')
+    except Exception as e:
+        print(f'Error occurred: {e}')
+        return None
+
+
+def display_loaned_books(result):
+    for value in result:
         print("{} {} {} {} {}".format(
             'Student ID: ' + str(value['studentID']),
             '\nTitle: ' + str(value['title']),
@@ -192,7 +214,8 @@ def get_student_id_loaned_books(student_id):
 
 
 def run_student_id_loaned_books():
-    print('There are currently multiple students with books on loan, their student ID\'s are: 6, 10, 12')
+    print('There are currently multiple students with books on loan, their student ID\'s are:')
+    get_student_ids_in_loaned_books()
     student_id = input('To view what books a student currently has on loan please enter their student ID number: ')
     return get_student_id_loaned_books(student_id)
 
@@ -222,3 +245,4 @@ def add_new_book(title, author, year_published, subject, description, age_restri
 
 if __name__ == '__main__':
     welcome_to_library()
+
