@@ -100,13 +100,19 @@ def librarian_chooses_option():
 
 
 def view_librarian_options():
-    print('There are a variety of options available for you to choose from:')
-    print("Select option 1 to see all the books available. [1]")
-    print("Select option 2 to see all students. [2]")
-    print("Select option 3 to see a students loaned books by Student ID. [3]")
-    print("Select option 4 to add a new student. [4]")
-    print("Select option 4 to add a new book. [5]")
+    print("Welcome to the Magical Library of Hogwarts! Here, you’ll find an array of enchanting options at your disposal:")
+    print("1. Cast the Summoning Charm [1] to unveil all Books of wizarding Wisdom.")
+    print("2. Unveil the Marauder’s Map [2] to reveal all the students of Hogwarts.")
+    print("3. Peer into the Pensieve [3] to inspect a student’s borrowed books, using their unique Wizarding ID.")
+    print("4. Enroll a New Student [4] into the hallowed halls of our esteemed institution.")
+    print("5. Conjure a New Book [5] to enrich our shelves with magical knowledge.")
+    print("Choose your path wisely, for the secrets of the wizarding world await your selection!")
     print()
+
+
+
+
+
 
 
 def display_all_books(result):
