@@ -18,7 +18,7 @@ def _map_students_values(students_list):
     for student in students_list:
         mapped.append(
             {
-                'studentID':  student[0],
+                'studentID': student[0],
                 'first_name': student[1],
                 'last_name': student[2],
                 # 'birthDate': student[3].strftime("%d-%m-%Y"),
@@ -157,18 +157,13 @@ def add_new_book(title, author, year_published, subject, description, age_restri
         print(f'Connected to database: {db_name}')
 
         query = """
-        INSERT INTO books (title, author, year_published, subject, description, age_restrict, stockID)
-        VALUES (%s, %s, %s, %s, %s, %s, %s)
-        """
-
-        data = (title, author, year_published, subject, description, age_restrict, stockID)
-        cur.execute(query, data)
+                INSERT INTO books (title, author, year_published, _subject, _description, age_restrict, stockID)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                """
+        cur.execute(query, (title, author, year_published, subject, description, age_restrict, stockID))
         db_connection.commit()
-
-        print(f'Book added successfully.')
-
-    except Exception as e:
-        print(f'Failed to add book. Error: {e}')
+    except Exception as exc:
+        print(f'Failed to add book. Error: {exc}')
 
     finally:
         if db_connection:
@@ -198,7 +193,7 @@ def add_student(first_name, last_name, birthDate, house, email, join_date):
             print('Connection closed: add new student')
 
 
-def delete_graduated_students ():
+def delete_graduated_students():
     try:
         db_name = 'hogwartslibrary'
         db_connection = _connect_to_db(db_name)
@@ -231,7 +226,7 @@ def run_db_utils():
     get_all_students()
     get_all_books()
     get_books_by_student_id(10)
-    # add_student("K", "O", "1998-07-12", "Slytherin", "KO@example.com", "2023-10-24")
+
 
 
 if __name__ == '__main__':

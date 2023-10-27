@@ -1,3 +1,4 @@
+# noinspection PyPackageRequirements
 import requests
 
 
@@ -74,7 +75,15 @@ def librarian_chooses_option():
         return  # librarian_adds_a_student()
     elif select_option == str(5):
         print("You have chosen to add a new book to the database.")
-        return  # librarian_adds_a_book()
+        title = input("Enter the title of the book: ")
+        author = input("Enter the author of the book: ")
+        year_published = int(input("Enter the year of publication: "))
+        subject = input("Enter the subject of the book: ")
+        description = input("Enter the description of the book: ")
+        age_restrict = int(input("Enter the age restriction: "))
+        stockID = int(input("Enter the stock ID: "))
+
+        return add_new_book(title, author, year_published, subject, description, age_restrict, stockID)
     elif select_option is None or isinstance(select_option, (int, float)):
         print("Invalid option please enter option again ")
     else:
@@ -89,7 +98,7 @@ def view_librarian_options():
     print("Select option 2 to see all students. [2]")
     print("Select option 3 to see a students loaned books by Student ID. [3]")
     print("Select option 4 to add a new student. [4]")
-    print("Select option 4 to add a new student. [5]")
+    print("Select option 4 to add a new book. [5]")
     print()
 
 
@@ -105,7 +114,7 @@ def display_all_books(result):
                 '\ndescription: ' + str(value['description']),
                 '\nage_restrict: ' + str(value['age_restrict']),
                 '\nstockID: ' + str(value['stockID'])
-                )
+            )
             )
             print('-' * 50)
 
@@ -133,7 +142,7 @@ def display_all_students(result):
                 # '\nhouse ' + str(item['house']),
                 # '\nemail: ' + str(item['email']),
                 # '\njoin date ' + str(item['join_date']),
-                )
+            )
             )
             print('-' * 30)
 
@@ -162,7 +171,7 @@ def display_loaned_books(result):
             '\nAuthor: ' + str(value['author']),
             '\nChecked Out Date: ' + str(value['check out']),
             '\nReturn By Date: ' + str(value['return by'])
-            )
+        )
         )
         print('-' * 30)
 
@@ -187,10 +196,27 @@ def run_student_id_loaned_books():
     return get_student_id_loaned_books(student_id)
 
 
-# def librarian_adds_a_book():
-#     print('Please enter what books you\'d like to add to the library')
-#     enterBook = input('Please enter the title, author, year published, subject, description')
-#     add_new_book(enterBook)
+def add_new_book(title, author, year_published, subject, description, age_restrict, stockID):
+    book_data = {
+        "title": title,
+        "author": author,
+        "year_published": year_published,
+        "_subject": subject,
+        "_description": description,
+        "age_restrict": age_restrict,
+        "stockID": stockID
+    }
+
+    response = requests.post(
+        'http://127.0.0.1:5000/add_new_book',
+        headers={'content-type': 'application/json'},
+        json=book_data
+    )
+
+    if response.status_code == 200:
+        print("Book added successfully!")
+    else:
+        print(f"Failed to add book. Error: {response.status_code}")
 
 
 if __name__ == '__main__':
